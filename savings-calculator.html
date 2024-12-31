@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Calculators</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        #cash-savings-calculator-section {
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+
+            @media screen and (min-width: 768px) {
+                padding: 1rem;
+            }
+
+            .main-container {
+                @media screen and (min-width: 768px) {
+                    display: flex;
+                    justify-content: space-around;
+                    width: 100%;
+                }
+            }
+
+            .layout {
+                @media screen and (min-width: 768px) {
+                    max-width: 623px;
+                }
+            }
+
+            .title {
+                font-size: 30px;
+                font-weight: 700;
+                line-height: 37.5px;
+                margin: 1rem;
+                max-width: 675px;
+                margin: 0 auto;
+            }
+
+            .subtitle {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 24px;
+                margin: 1rem auto;
+                width: 100%;
+                max-width: 675px;
+            }
+
+            .calculator-container {
+                /* Update with dynamic variable */
+                max-width: 1280px;
+                /* Update with dynamic variable */
+                margin: 0 auto;
+                border-radius: 10px;
+            }
+
+            .calculator-form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                max-width: 675px;
+                /* Update with dynamic variable */
+                background: #e6e6e6;
+                /* Update with dynamic variable */
+                margin: 0 auto;
+                padding: 1rem;
+
+                @media screen and (min-width: 768px) {
+                    background-color: transparent;
+                    padding: 0;
+                }
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <section id="cash-savings-calculator-section">
+        <div class="main-container">
+            <div class="layout">
+                <h2 class="title">Calculate Your Savings</h2>
+                <p class="subtitle">You could save when you transfer your balance to our Classic Card and enjoy our promotional rate. Since we have no PSECU balance transfer fee or annual fee, the savings stay with you!</p>
+                <div class="calculator-container">
+                    <div class="calculator-form"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
