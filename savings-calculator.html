@@ -73,6 +73,172 @@
                     padding: 0;
                 }
             }
+            
+            .input-container {
+                margin: 1rem 0;
+
+                @media screen and (min-width: 768px) {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                }
+            }
+
+            .input-title-container {
+                margin-top: 2rem;
+            }
+
+            .input-title {
+                /* Update with dynamic variable */
+                color: var(--primary-dark-teal, #043436);
+                /* Update with dynamic variable */
+
+                font-family: Lexend Deca;
+                font-size: 16px;
+
+                /* Update with dynamic variable */
+                font-weight: 500;
+                /* Update with dynamic variable */
+
+                line-height: 22.4px;
+                width: 100%;
+                margin-bottom: .6rem;
+            }
+
+            .input-subtitle {
+                font-size: 12px;
+                padding-bottom: 1rem;
+                opacity: .6;
+            }
+
+            .input {
+                display: flex;
+                align-items: center;
+                border-radius: 50px;
+
+
+                /* Update with dynamic variable = $borderDefault*/
+                border: 1px solid #757575;
+                /* Update with dynamic variable */
+
+                /* Update with dynamic variable = --primary-white*/
+                background: var(--primary-white, #FFF);
+                /* Update with dynamic variable */
+
+                height: 55px;
+                width: 100%;
+                color: #777777;
+
+                @media screen and (min-width: 768px) {
+                    max-width: 175px;
+                }
+
+                .dollar-sign {
+                    font-size: 14px;
+                    max-width: 50px;
+                    width: 100%;
+                    text-align: center;
+                    padding-left: 10px;
+
+                    @media screen and (min-width: 768px) {
+                        max-width: 30px;
+                    }
+                }
+
+                .vertical-line {
+                    border-left: 1px solid gray;
+                    height: 100%;
+                }
+
+                .slider-container {
+                    width: 100%;
+                    padding: .5rem 0;
+                    display: none;
+
+                    @media screen and (min-width: 768px) {
+                        display: block;
+                    }
+                }
+
+                .user-input {
+                    border: none;
+                    outline: none;
+                    background-color: transparent;
+                    font-family: inherit;
+                    font-size: inherit;
+                    padding: 5px 1rem;
+                    width: 100%;
+                }
+
+                &:focus-within {
+                    border-color: #177d78; 
+                    box-shadow: 0 0 5px rgba(23, 125, 120, 0.5); 
+                }
+            }
+
+            .slider-container {
+                width: 100%;
+                padding: .5rem 0;
+                display: none;
+
+                @media screen and (min-width: 768px) {
+                    display: block;
+                }
+            }
+
+            .label-input {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 12px;
+            }
+
+            #min-savings-balance,
+            #max-savings-balance {
+                position: relative;
+                font-weight: 400;
+                z-index: 1;
+                padding: 0 .5rem;
+                font-size: 16px;
+                opacity: .7;
+            }
+            input[type="range"] {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 100%;
+                height: 9px;
+                border-radius: 5px;
+                outline: none;
+                background: linear-gradient(to right, #177D78 0%, #177D78 50%, #AEB0B5 50%, #AEB0B5 100%);
+                transition: opacity 0.2s;
+            }
+
+            input[type="range"]::-webkit-slider-thumb,
+            input[type="range"]::-moz-range-thumb {
+                width: 50px;
+                height: 50px;
+                background-color: #177D78;
+                border-radius: 50%;
+                cursor: pointer;
+                border: 2px solid transparent;
+                transition: border-color 0.2s, opacity 0.2s;
+            }
+
+            input[type="range"]::-moz-range-thumb {
+                border: 2px solid #b4fff0;
+            }
+
+            input[type="range"]:hover::-webkit-slider-thumb,
+            input[type="range"]:hover::-moz-range-thumb,
+            input[type="range"]:focus::-webkit-slider-thumb,
+            input[type="range"]:focus::-moz-range-thumb {
+                border-color: #b4fff0;
+                opacity: 1;
+            }
+
+
         }
 
 
@@ -86,7 +252,24 @@
                 <h2 class="title">Calculate Your Savings</h2>
                 <p class="subtitle">You could save when you transfer your balance to our Classic Card and enjoy our promotional rate. Since we have no PSECU balance transfer fee or annual fee, the savings stay with you!</p>
                 <div class="calculator-container">
-                    <div class="calculator-form"></div>
+                    <div class="calculator-form">
+                        <div class="input-container">
+                            <div class="input-title">What is the balance on your current credit card?</div>
+                            <div class="input">
+                                <div class="dollar-sign">$</div>
+                                <div class="vertical-line"></div>
+                                <!-- <label for="cash-amount" class="sr-only">Cash Rewards Calculator Input</label> -->
+                                <input class="user-input" type="text" id="cash-amount" placeholder="Enter amount" value="15000" min="1" step="1000" required />
+                            </div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="label-input">
+                                <div id="min-savings-balance">$3</div>
+                                <input label="current balance slider" type="range" id="current-balance-slider" min="3" max="300000" value="15000" />
+                                <div id="max-savings-balance">$300,000</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
