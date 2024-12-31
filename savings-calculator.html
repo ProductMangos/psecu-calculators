@@ -269,6 +269,30 @@
                                 <div id="max-savings-balance">$300,000</div>
                             </div>
                         </div>
+                        <div class="input-container">
+                            <div class="input-title-container">
+                                <!-- input field from module below -->
+                                <div class="input-title">What is the interest rate on your current card?</div>
+                                <!-- input field from module above-->
+                                <div class="input-subtitle">The average credit card APR in the United States is 20.56%.
+                                </div>
+                            </div>
+                            <div class="input">
+                                <div class="dollar-sign">%</div>
+                                <div class="vertical-line"></div>
+                                <!-- <label for="cash-amount" class="sr-only">Cash Rewards Calculator Input</label> -->
+                                <input class="user-input" type="text" id="percent-amount" placeholder="Enter amount"
+                                    value="20.56" min="1" required />
+                            </div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="label-input apr-label">
+                                <div id="min-savings-balance">4.91%</div>
+                                <input label="credit card apr slider" type="range" id="credit-card-apr" min="4.91"
+                                    max="30" value="20.56" step="0.01" />
+                                <div id="max-savings-balance">30%</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
