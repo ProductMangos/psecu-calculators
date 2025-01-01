@@ -8,6 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: "Lexend Deca", serif;
         }
@@ -25,6 +30,7 @@
                     display: flex;
                     justify-content: space-around;
                     width: 100%;
+                    
                 }
             }
 
@@ -38,25 +44,24 @@
                 font-size: 30px;
                 font-weight: 700;
                 line-height: 37.5px;
-                margin: 1rem;
                 max-width: 675px;
-                margin: 0 auto;
+                padding: 0 1rem;
             }
 
             .subtitle {
                 font-size: 16px;
                 font-weight: 400;
                 line-height: 24px;
-                margin: 1rem auto;
+                margin: 1.5rem auto;
                 width: 100%;
                 max-width: 675px;
+                padding: 0 1rem;
             }
 
             .calculator-container {
                 /* Update with dynamic variable */
                 max-width: 1280px;
                 /* Update with dynamic variable */
-                margin: 0 auto;
                 border-radius: 10px;
             }
 
@@ -70,6 +75,7 @@
                 /* Update with dynamic variable */
                 margin: 0 auto;
                 padding: 1rem;
+                border-radius: 20px;
 
                 @media screen and (min-width: 768px) {
                     background-color: transparent;
@@ -78,8 +84,6 @@
             }
             
             .input-container {
-                margin: 1rem 0;
-
                 @media screen and (min-width: 768px) {
                     display: flex;
                     align-items: center;
@@ -284,9 +288,9 @@
                 width: 100%;
                 font-size: 12px;
                 line-height: 16px;
-                margin-top: 2rem;
+                /* margin-top: 2rem; */
                 font-weight: 500;
-
+                padding: 2rem 0 .5rem 0;
                 @media screen and (min-width: 768px) {
                     display: none;
                 }
@@ -300,15 +304,24 @@
             .savings-calculator-answer {
                 color: #043436;
                 font-weight: 700;
-                font-size: 70px;
+                font-size: 45px;
                 line-height: 0px;
+                margin: 2.5rem 0;
+
+                @media screen and (min-width: 768px) {
+                    font-size: 70px;
+                }
             }
 
             .answer-month {
                 color: #043436;
-                font-weight: 500;
-                font-size: 32px;
+                font-weight: 700;
+                font-size: 16px;
                 line-height: 0px;
+
+                @media screen and (min-width: 768px) {
+                    font-size: 32px;
+                }
 
             }
 
@@ -338,6 +351,7 @@
 
                 .reset-icon {
                     margin-right: .3rem;
+                    margin-top: .3rem;
                 }
 
                 .reset-button {
@@ -346,8 +360,7 @@
                     background-color: transparent;
                     font-size: 14px;
                     color: #043436;
-                    font-weight: 400;
-                    line-height: 24px;
+                    font-weight: 500;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -489,7 +502,7 @@
                 <div class="reset-container">
                     <div class="button-container">
                         <button class="reset-button">
-                            <span class="reset-icon"><svg width="20" height="19" viewBox="0 0 20 19" fill="none"
+                            <span class="reset-icon"><svg width="15" height="15" viewBox="0 0 20 19" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M17.7344 10.7891C18.2422 10.9453 18.5156 11.4531 18.3594 11.9609C17.2656 15.6719 13.8281 18.25 9.96094 18.25C6.875 18.25 4.02344 16.5703 2.46094 13.9531V17.9375C2.46094 18.4844 2.07031 18.875 1.52344 18.875C1.01562 18.875 0.585938 18.4844 0.585938 17.9375V11.6875C0.585938 11.1797 1.01562 10.75 1.52344 10.75H7.77344C8.32031 10.75 8.71094 11.1797 8.71094 11.6875C8.71094 12.2344 8.28125 12.625 7.77344 12.625H3.82812C5 14.8906 7.34375 16.375 9.96094 16.375C13.0078 16.375 15.7422 14.3438 16.5625 11.4141C16.7188 10.9062 17.2266 10.6328 17.7344 10.7891ZM18.4375 0.125C18.9453 0.125 19.375 0.554688 19.375 1.0625V7.3125C19.375 7.85938 18.9453 8.25 18.4375 8.25H12.1875C11.6406 8.25 11.25 7.85938 11.25 7.3125C11.25 6.80469 11.6406 6.375 12.1875 6.375H16.0938C14.9219 4.14844 12.5781 2.625 10 2.625C6.95312 2.625 4.21875 4.69531 3.35938 7.58594C3.24219 8.09375 2.73438 8.36719 2.22656 8.21094C1.71875 8.09375 1.44531 7.54688 1.5625 7.07812C2.65625 3.36719 6.13281 0.75 10 0.75C13.0859 0.75 15.9375 2.46875 17.5 5.08594V1.0625C17.5 0.554688 17.8906 0.125 18.4375 0.125Z"
