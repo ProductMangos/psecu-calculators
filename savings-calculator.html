@@ -535,5 +535,139 @@
             </div>
         </div>
     </section>
+    <script>
+        const cashInput = document.getElementById('cash-amount');
+        const percentInput = document.getElementById('percent-amount');
+        const answer = document.querySelectorAll('.savings-calculator-answer');
+        const resetButton = document.querySelector('.reset-container');
+        const currentBalanceSlider = document.querySelector('#current-balance-slider');
+        const creditCardAprSlider = document.querySelector('#credit-card-apr');
+
+        // Setting original values
+        const originalCashValue = cashInput.value;
+        const originalPercentValue = percentInput.value;
+        const originalSliderValue = currentBalanceSlider.value;
+        const originalCreditCardAprValue = creditCardAprSlider.value;
+
+        // Max values for inputs and sliders
+        const maxCashValue = 300000;
+        const maxPercentValue = 30;
+
+        // Variables for calculation
+        const promoRate = 4.90;
+        let cashAmount = originalCashValue;
+        let percentageAmount = originalPercentValue;
+
+        // Setting max values for inputs
+        // Adding commas to inputs
+        const enforceNumericInput = (input, maxValue) => {
+            input.addEventListener('input', function () {
+                const cursorPosition = input.selectionStart;
+                 // Remove commas
+                let numericValue = input.value.replace(/,/g, '');
+                // Remove non-digit characters
+                numericValue = numericValue.replace(/\D/g, ''); 
+
+                // Enforce maximum value
+                if (numericValue && parseInt(numericValue, 10) > maxValue) {
+                    numericValue = maxValue.toString();
+                }
+
+                // Format value with commas
+                input.value = numericValue ? parseInt(numericValue, 10).toLocaleString() : '';
+                // Preserve cursor position
+                input.setSelectionRange(cursorPosition, cursorPosition); 
+            });
+        };
+
+        enforceNumericInput(cashInput, maxCashValue);
+        enforceNumericInput(percentInput, maxPercentValue);
+
+        const removeCommaFromInputCalculator = (value) => parseInt(value.replace(/,/g, ""), 10) || 0;
+
+        const calculation = (cashValue, percentValue, currentPromoRate) => {
+            const numericCash = removeCommaFromInputCalculator(cashValue);
+            const promoRateDecimal = currentPromoRate / 100;
+            const percentDecimal = percentValue / 100;
+            const monthlyDifference = (percentDecimal - promoRateDecimal) / 12;
+            return (numericCash * monthlyDifference).toFixed(2);
+        };
+
+        const adjustSliderBackground = (slider, isPercent) => {
+            const sliderValue = isPercent
+                ? ((slider.value - slider.min) / (slider.max - slider.min)) * 100
+                : (slider.value / slider.max) * 100;
+            slider.style.background = `linear-gradient(to right, #177D78 0%, #177D78 ${sliderValue}%, #AEB0B5 ${sliderValue}%, #AEB0B5 100%)`;
+        };
+
+        const updateAnswer = () => {
+            answer.forEach(ans => {
+                ans.textContent = `$${parseFloat(calculation(cashAmount, percentageAmount, promoRate), 10).toLocaleString()}`;
+            });
+        };
+
+        cashInput.addEventListener('input', () => {
+            // adjusting both the input and slider values
+            cashAmount = cashInput.value;
+            currentBalanceSlider.value = removeCommaFromInputCalculator(cashAmount);
+            adjustSliderBackground(currentBalanceSlider);
+            updateAnswer();
+        });
+
+        currentBalanceSlider.addEventListener('input', () => {
+            // adjusting both the input and slider values
+            cashAmount = currentBalanceSlider.value;
+            cashInput.value = parseInt(cashAmount, 10).toLocaleString(); // Ensure commas are added
+            adjustSliderBackground(currentBalanceSlider);
+            updateAnswer();
+        });
+
+        percentInput.addEventListener('input', () => {
+            // adjusting both the input and slider values
+            percentageAmount = percentInput.value;
+            creditCardAprSlider.value = percentageAmount;
+            adjustSliderBackground(creditCardAprSlider, true);
+            updateAnswer();
+        });
+
+        creditCardAprSlider.addEventListener('input', () => {
+            // adjusting both the input and slider values
+            percentageAmount = creditCardAprSlider.value;
+            percentInput.value = percentageAmount;
+            adjustSliderBackground(creditCardAprSlider, true);
+            updateAnswer();
+        });
+
+        resetButton.addEventListener('click', () => {
+            cashInput.value = originalCashValue;
+            percentInput.value = originalPercentValue;
+            currentBalanceSlider.value = originalSliderValue;
+            creditCardAprSlider.value = originalCreditCardAprValue;
+            cashAmount = originalCashValue;
+            percentageAmount = originalPercentValue;
+            updateAnswer();
+            adjustSliderBackground(currentBalanceSlider);
+            adjustSliderBackground(creditCardAprSlider, true);
+        });
+
+        updateAnswer();
+        adjustSliderBackground(currentBalanceSlider);
+        adjustSliderBackground(creditCardAprSlider, true);
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            cashInput.value = parseInt(cashInput.value || 0, 10).toLocaleString(); // Format with commas
+            percentInput.value = parseInt(percentInput.value || 0, 10).toLocaleString(); // Format if necessary
+            adjustSliderBackground(currentBalanceSlider);
+            adjustSliderBackground(creditCardAprSlider, true);
+            currentBalanceSlider.step = 500;
+            creditCardAprSlider.step = .5;
+
+            answer.forEach(ans => {
+                ans.textContent = `$${insertCommaIntoInputCalculator(calculation(cashAmount, percentageAmount, promoRate))}`;
+            });
+        });
+
+    </script>
 </body>
 </html>
