@@ -218,22 +218,43 @@
                 transition: opacity 0.2s;
             }
 
-            input[type="range"]::-webkit-slider-thumb,
-            input[type="range"]::-moz-range-thumb {
+            input[type="range"]::-webkit-slider-thumb {
+                width: 100%;
+                -webkit-appearance: none;
+                appearance: none;
                 width: 50px;
                 height: 50px;
                 background-color: #177D78;
                 border-radius: 50%;
                 cursor: pointer;
-                border: 2px solid transparent;
-                transition: border-color 0.2s, opacity 0.2s;
+                position: relative;
+                z-index: 2;
             }
 
+            input[type="range"]::-moz-range-thumb {
+                width: 50px;
+                height: 50px;
+                background-color: #177D78;
+                border: 2px solid #b4fff0;
+                border-radius: 50%;
+                cursor: pointer;
+            }
 
+            input[type="range"]:hover::-webkit-slider-thumb {
+                border: 2px solid #b4fff0;
+                opacity: 1;
+            }
 
-            input[type="range"]:hover::-webkit-slider-thumb,
-            input[type="range"]:hover::-moz-range-thumb,
-            input[type="range"]:focus::-webkit-slider-thumb,
+            input[type="range"]:hover::-moz-range-thumb {
+                border: 2px solid #b4fff0;
+                opacity: 1;
+            }
+
+            input[type="range"]:focus::-webkit-slider-thumb {
+                border: 2px solid #b4fff0;
+                opacity: 1;
+            }
+
             input[type="range"]:focus::-moz-range-thumb {
                 border: 2px solid #b4fff0;
                 opacity: 1;
@@ -339,6 +360,16 @@
 
                 .reset-button:focus {
                     text-decoration: underline;
+                }
+            }
+
+            .horizontal-line-desktop {
+                margin-top: 2rem;
+                opacity: .6;
+                display: none;
+
+                @media screen and (min-width: 768px) {
+                    display: block;
                 }
             }
 
