@@ -562,7 +562,7 @@
 
         // Setting max values for inputs
         // Adding commas to inputs
-        const enforceNumericInput = (input, maxValue) => {
+        const enforceSavingsCalculatorNumericInput = (input, maxValue) => {
             input.addEventListener('input', function () {
                 const cursorPosition = input.selectionStart;
                  // Remove commas
@@ -582,8 +582,8 @@
             });
         };
 
-        enforceNumericInput(savingsCalculatorCreditCardBalance, maxSavingsCalculatorBalanceValue);
-        enforceNumericInput(savingsCalculatorPercentInput, maxSavingsCalculatorPercentValue);
+        enforceSavingsCalculatorNumericInput(savingsCalculatorCreditCardBalance, maxSavingsCalculatorBalanceValue);
+        enforceSavingsCalculatorNumericInput(savingsCalculatorPercentInput, maxSavingsCalculatorPercentValue);
 
         const removeCommaFromInputCalculator = (value) => parseInt(value.replace(/,/g, ""), 10) || 0;
 
@@ -595,14 +595,14 @@
             return (numericCash * monthlyDifference).toFixed(2);
         };
 
-        const adjustSliderBackground = (slider, isPercent) => {
+        const adjustSavingsCalculatorSliderBackground = (slider, isPercent) => {
             const sliderValue = isPercent
                 ? ((slider.value - slider.min) / (slider.max - slider.min)) * 100
                 : (slider.value / slider.max) * 100;
             slider.style.background = `linear-gradient(to right, #177D78 0%, #177D78 ${sliderValue}%, #AEB0B5 ${sliderValue}%, #AEB0B5 100%)`;
         };
 
-        const updateAnswer = () => {
+        const updateSavingsCalculatorAnswer = () => {
             savingsCalculatorAnswer.forEach(ans => {
                 ans.textContent = `$${parseFloat(savingsAverageCalculation(savingsCalculatorBalanceAmount, savingsCalculatorPercentageAmount, savingsCalculatorPromoRate), 10).toLocaleString()}`;
             });
@@ -612,32 +612,32 @@
             // adjusting both the input and slider values
             savingsCalculatorBalanceAmount = savingsCalculatorCreditCardBalance.value;
             savingsCalculatorCurrentBalanceSlider.value = removeCommaFromInputCalculator(savingsCalculatorBalanceAmount);
-            adjustSliderBackground(savingsCalculatorCurrentBalanceSlider);
-            updateAnswer();
+            adjustSavingsCalculatorSliderBackground(savingsCalculatorCurrentBalanceSlider);
+            updateSavingsCalculatorAnswer();
         });
 
         savingsCalculatorCurrentBalanceSlider.addEventListener('input', () => {
             // adjusting both the input and slider values
             savingsCalculatorBalanceAmount = savingsCalculatorCurrentBalanceSlider.value;
             savingsCalculatorCreditCardBalance.value = parseInt(savingsCalculatorBalanceAmount, 10).toLocaleString(); // Ensure commas are added
-            adjustSliderBackground(savingsCalculatorCurrentBalanceSlider);
-            updateAnswer();
+            adjustSavingsCalculatorSliderBackground(savingsCalculatorCurrentBalanceSlider);
+            updateSavingsCalculatorAnswer();
         });
 
         savingsCalculatorPercentInput.addEventListener('input', () => {
             // adjusting both the input and slider values
             savingsCalculatorPercentageAmount = savingsCalculatorPercentInput.value;
             savingsCalculatorCreditCardAprSlider.value = savingsCalculatorPercentageAmount;
-            adjustSliderBackground(savingsCalculatorCreditCardAprSlider, true);
-            updateAnswer();
+            adjustSavingsCalculatorSliderBackground(savingsCalculatorCreditCardAprSlider, true);
+            updateSavingsCalculatorAnswer();
         });
 
         savingsCalculatorCreditCardAprSlider.addEventListener('input', () => {
             // adjusting both the input and slider values
             savingsCalculatorPercentageAmount = savingsCalculatorCreditCardAprSlider.value;
             savingsCalculatorPercentInput.value = savingsCalculatorPercentageAmount;
-            adjustSliderBackground(savingsCalculatorCreditCardAprSlider, true);
-            updateAnswer();
+            adjustSavingsCalculatorSliderBackground(savingsCalculatorCreditCardAprSlider, true);
+            updateSavingsCalculatorAnswer();
         });
 
         savingsCalculatorResetButton.addEventListener('click', () => {
@@ -647,21 +647,21 @@
             savingsCalculatorCreditCardAprSlider.value = originalSavingsCalculatorCreditCardAprValue;
             savingsCalculatorBalanceAmount = originalSavingsCalculatorBalanceValue;
             savingsCalculatorPercentageAmount = originalSavingsCalculatorPercentValue;
-            updateAnswer();
-            adjustSliderBackground(savingsCalculatorCurrentBalanceSlider);
-            adjustSliderBackground(savingsCalculatorCreditCardAprSlider, true);
+            updateSavingsCalculatorAnswer();
+            adjustSavingsCalculatorSliderBackground(savingsCalculatorCurrentBalanceSlider);
+            adjustSavingsCalculatorSliderBackground(savingsCalculatorCreditCardAprSlider, true);
         });
 
-        updateAnswer();
-        adjustSliderBackground(savingsCalculatorCurrentBalanceSlider);
-        adjustSliderBackground(savingsCalculatorCreditCardAprSlider, true);
+        updateSavingsCalculatorAnswer();
+        adjustSavingsCalculatorSliderBackground(savingsCalculatorCurrentBalanceSlider);
+        adjustSavingsCalculatorSliderBackground(savingsCalculatorCreditCardAprSlider, true);
 
 
         document.addEventListener('DOMContentLoaded', () => {
             savingsCalculatorCreditCardBalance.value = parseInt(savingsCalculatorCreditCardBalance.value || 0, 10).toLocaleString(); // Format with commas
             savingsCalculatorPercentInput.value = parseInt(savingsCalculatorPercentInput.value || 0, 10).toLocaleString(); // Format if necessary
-            adjustSliderBackground(savingsCalculatorCurrentBalanceSlider);
-            adjustSliderBackground(savingsCalculatorCreditCardAprSlider, true);
+            adjustSavingsCalculatorSliderBackground(savingsCalculatorCurrentBalanceSlider);
+            adjustSavingsCalculatorSliderBackground(savingsCalculatorCreditCardAprSlider, true);
             savingsCalculatorCurrentBalanceSlider.step = 500;
             savingsCalculatorCreditCardAprSlider.step = .5;
 
