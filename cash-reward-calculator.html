@@ -158,16 +158,6 @@
                     height: 100%;
                 }
 
-                .slider-container {
-                    width: 100%;
-                    padding: .5rem 0;
-                    display: none;
-
-                    @media screen and (min-width: 768px) {
-                        display: block;
-                    }
-                }
-
                 .user-input {
                     border: none;
                     outline: none;
@@ -184,15 +174,6 @@
                 }
             }
 
-            .slider-container {
-                width: 100%;
-                padding: .5rem 0;
-                display: none;
-
-                @media screen and (min-width: 768px) {
-                    display: block;
-                }
-            }
 
             .label-input {
                 display: flex;
@@ -202,67 +183,6 @@
                 font-size: 12px;
             }
 
-            #min-savings-balance,
-            #max-savings-balance {
-                position: relative;
-                font-weight: 400;
-                z-index: 1;
-                padding: 0 .5rem;
-                font-size: 16px;
-                opacity: .7;
-            }
-            input[type="range"] {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 100%;
-                height: 9px;
-                border-radius: 5px;
-                outline: none;
-                background: linear-gradient(to right, #177D78 0%, #177D78 50%, #AEB0B5 50%, #AEB0B5 100%);
-                transition: opacity 0.2s;
-            }
-
-            input[type="range"]::-webkit-slider-thumb {
-                width: 100%;
-                -webkit-appearance: none;
-                appearance: none;
-                width: 50px;
-                height: 50px;
-                background-color: #177D78;
-                border-radius: 50%;
-                cursor: pointer;
-                position: relative;
-                z-index: 2;
-            }
-
-            input[type="range"]::-moz-range-thumb {
-                width: 50px;
-                height: 50px;
-                background-color: #177D78;
-                border: 2px solid #b4fff0;
-                border-radius: 50%;
-                cursor: pointer;
-            }
-
-            input[type="range"]:hover::-webkit-slider-thumb {
-                border: 2px solid #b4fff0;
-                opacity: 1;
-            }
-
-            input[type="range"]:hover::-moz-range-thumb {
-                border: 2px solid #b4fff0;
-                opacity: 1;
-            }
-
-            input[type="range"]:focus::-webkit-slider-thumb {
-                border: 2px solid #b4fff0;
-                opacity: 1;
-            }
-
-            input[type="range"]:focus::-moz-range-thumb {
-                border: 2px solid #b4fff0;
-                opacity: 1;
-            }
 
             .answer-container {
                 @media screen and (min-width: 768px) {
@@ -292,6 +212,7 @@
                 font-weight: 500;
                 padding: 2rem 1rem .5rem 1rem;
                 
+
                 @media screen and (min-width: 768px) {
                     display: none;
                 }
@@ -308,12 +229,13 @@
                 font-size: clamp(1.75rem, -0.1452rem + 8.417vw, 4.375rem);
 
                 line-height: 0px;
-                margin: 1.5rem 0 3rem 0;
+                margin-bottom: 3rem;
 
+                margin-top: 20%;
+                margin-bottom: 15%;
                 @media screen and (min-width: 768px) {
                     font-size: 70px;
                     margin-bottom: 5rem;
-                    margin-top: 10%;
 
                 }
             }
@@ -469,34 +391,25 @@
                                 <input class="user-input" type="text" id="cash-rewards-calculator-credit-card-balance" placeholder="Enter amount" value="15000" min="1" step="1000" required />
                             </div>
                         </div>
-                        <div class="slider-container">
-                            <div class="label-input">
-                                <div id="min-savings-balance">$3</div>
-                                <input label="current balance slider" type="range" id="cash-rewards-calculator-current-balance-slider" min="3" max="300000" value="15000" />
-                                <div id="max-savings-balance">$300,000</div>
-                            </div>
-                        </div>
                         <div class="input-container">
                             <div class="input-title-container">
                                 <!-- input field from module below -->
                                 <div class="input-title">How long to pay it off?</div>
                                 <!-- input field from module above-->
                             </div>
-                            <div class="input">
-                                <div class="dollar-sign">%</div>
-                                <div class="vertical-line"></div>
-                                <!-- <label for="cash-rewards-calculator-credit-card-balance" class="sr-only">Cash Rewards Calculator Input</label> -->
-                                <input class="user-input" type="text" id="cash-rewards-calculator-percent-amount" placeholder="Enter amount"
-                                    value="20.56" min="1" required />
-                            </div>
-                        </div>
-                        <div class="slider-container">
-                            <div class="label-input apr-label">
-                                <div id="min-savings-balance">4.91%</div>
-                                <input label="credit card apr slider" type="range" id="cash-rewards-calculator-credit-card-apr" min="4.91"
-                                    max="30" value="20.56" step="0.01" />
-                                <div id="max-savings-balance">30%</div>
-                            </div>
+                            <select
+                                id="personal-loan-term-length"
+                                name="personal-loan-term-length"
+                                class="personal-loan-term-length"
+                            >
+                                <option value="12" data-apr="12">12 months</option>
+                                <option value="24" data-apr="24">24 months</option>
+                                <option value="36" data-apr="36">36 months</option>
+                                <option value="48" data-apr="48">48 months</option>
+                                <option value="60" data-apr="60">60 months</option>
+                                <option value="72" data-apr="72">72 months</option>
+                                <option value="84" data-apr="84">84 months</option>
+                          </select>
                         </div>
                         <div class="answer-text-mobile">
                             <div class="answer-container">
@@ -532,7 +445,7 @@
                     <p class="cash-rewards-calculator-monthly-payment">$53,380.13</p>
                 </div>
                 <div class="disclosures-container">
-                    <p class="disclosures"> 1This estimate is provided for informational purposes only. Your actual avings may vary.</p>
+                    <p class="disclosures">For informational purposes only. Rate assumes excellent creditworthiness; your rate may differ from the rate(s) down below. Actual terms will vary. See below for important details.</p>
                     <div class="cta-container">
                         <button class="cta">Apply Today</button>
                     </div>
@@ -545,16 +458,12 @@
         const savingsCalculatorPercentInput = document.getElementById('cash-rewards-calculator-percent-amount');
         const savingsCalculatorAnswer = document.querySelectorAll('.cash-rewards-calculator-monthly-payment');
         const savingsCalculatorResetButton = document.querySelector('.savings-reset-container');
-        const savingsCalculatorCurrentBalanceSlider = document.querySelector('#cash-rewards-calculator-current-balance-slider');
-        const savingsCalculatorCreditCardAprSlider = document.querySelector('#cash-rewards-calculator-credit-card-apr');
 
         // Setting original values
         const originalSavingsCalculatorBalanceValue = savingsCalculatorCreditCardBalance.value;
         const originalSavingsCalculatorPercentValue = savingsCalculatorPercentInput.value;
-        const originalSavingsCalculatorSliderBalanceValue = savingsCalculatorCurrentBalanceSlider.value;
-        const originalSavingsCalculatorCreditCardAprValue = savingsCalculatorCreditCardAprSlider.value;
 
-        // Max values for inputs and sliders
+        // Max values for inputs
         const maxSavingsCalculatorBalanceValue = 300000;
         const maxSavingsCalculatorPercentValue = 30;
 
@@ -598,13 +507,6 @@
             return (numericCash * monthlyDifference).toFixed(2);
         };
 
-        const adjustSavingsCalculatorSliderBackground = (slider, isPercent) => {
-            const sliderValue = isPercent
-                ? ((slider.value - slider.min) / (slider.max - slider.min)) * 100
-                : (slider.value / slider.max) * 100;
-            slider.style.background = `linear-gradient(to right, #177D78 0%, #177D78 ${sliderValue}%, #AEB0B5 ${sliderValue}%, #AEB0B5 100%)`;
-        };
-
         const updateSavingsCalculatorAnswer = () => {
             savingsCalculatorAnswer.forEach(ans => {
                 ans.textContent = `$${parseFloat(savingsAverageCalculation(savingsCalculatorBalanceAmount, savingsCalculatorPercentageAmount, savingsCalculatorPromoRate), 10).toLocaleString()}`;
@@ -612,62 +514,31 @@
         };
 
         savingsCalculatorCreditCardBalance.addEventListener('input', () => {
-            // adjusting both the input and slider values
             savingsCalculatorBalanceAmount = savingsCalculatorCreditCardBalance.value;
-            savingsCalculatorCurrentBalanceSlider.value = removeCommaFromInputCalculator(savingsCalculatorBalanceAmount);
-            adjustSavingsCalculatorSliderBackground(savingsCalculatorCurrentBalanceSlider);
             updateSavingsCalculatorAnswer();
         });
 
-        savingsCalculatorCurrentBalanceSlider.addEventListener('input', () => {
-            // adjusting both the input and slider values
-            savingsCalculatorBalanceAmount = savingsCalculatorCurrentBalanceSlider.value;
-            savingsCalculatorCreditCardBalance.value = parseInt(savingsCalculatorBalanceAmount, 10).toLocaleString(); // Ensure commas are added
-            adjustSavingsCalculatorSliderBackground(savingsCalculatorCurrentBalanceSlider);
-            updateSavingsCalculatorAnswer();
-        });
 
         savingsCalculatorPercentInput.addEventListener('input', () => {
-            // adjusting both the input and slider values
             savingsCalculatorPercentageAmount = savingsCalculatorPercentInput.value;
-            savingsCalculatorCreditCardAprSlider.value = savingsCalculatorPercentageAmount;
-            adjustSavingsCalculatorSliderBackground(savingsCalculatorCreditCardAprSlider, true);
             updateSavingsCalculatorAnswer();
         });
 
-        savingsCalculatorCreditCardAprSlider.addEventListener('input', () => {
-            // adjusting both the input and slider values
-            savingsCalculatorPercentageAmount = savingsCalculatorCreditCardAprSlider.value;
-            savingsCalculatorPercentInput.value = savingsCalculatorPercentageAmount;
-            adjustSavingsCalculatorSliderBackground(savingsCalculatorCreditCardAprSlider, true);
-            updateSavingsCalculatorAnswer();
-        });
 
         savingsCalculatorResetButton.addEventListener('click', () => {
             savingsCalculatorCreditCardBalance.value = originalSavingsCalculatorBalanceValue;
             savingsCalculatorPercentInput.value = originalSavingsCalculatorPercentValue;
-            savingsCalculatorCurrentBalanceSlider.value = originalSavingsCalculatorSliderBalanceValue;
-            savingsCalculatorCreditCardAprSlider.value = originalSavingsCalculatorCreditCardAprValue;
             savingsCalculatorBalanceAmount = originalSavingsCalculatorBalanceValue;
             savingsCalculatorPercentageAmount = originalSavingsCalculatorPercentValue;
             updateSavingsCalculatorAnswer();
-            adjustSavingsCalculatorSliderBackground(savingsCalculatorCurrentBalanceSlider);
-            adjustSavingsCalculatorSliderBackground(savingsCalculatorCreditCardAprSlider, true);
         });
 
         updateSavingsCalculatorAnswer();
-        adjustSavingsCalculatorSliderBackground(savingsCalculatorCurrentBalanceSlider);
-        adjustSavingsCalculatorSliderBackground(savingsCalculatorCreditCardAprSlider, true);
 
 
         document.addEventListener('DOMContentLoaded', () => {
             savingsCalculatorCreditCardBalance.value = parseInt(savingsCalculatorCreditCardBalance.value || 0, 10).toLocaleString(); // Format with commas
             savingsCalculatorPercentInput.value = parseInt(savingsCalculatorPercentInput.value || 0, 10).toLocaleString(); // Format if necessary
-            adjustSavingsCalculatorSliderBackground(savingsCalculatorCurrentBalanceSlider);
-            adjustSavingsCalculatorSliderBackground(savingsCalculatorCreditCardAprSlider, true);
-            savingsCalculatorCurrentBalanceSlider.step = 500;
-            savingsCalculatorCreditCardAprSlider.step = .5;
-
             savingsCalculatorAnswer.forEach(ans => {
                 ans.textContent = `$${insertCommaIntoInputCalculator(savingsAverageCalculation(savingsCalculatorBalanceAmount, savingsCalculatorPercentageAmount, savingsCalculatorPromoRate))}`;
             });
