@@ -336,7 +336,7 @@
                 }
             }
 
-            .reset-container {
+            .savings-reset-container {
                 display: flex;
                 align-items: center;
                 cursor: pointer;
@@ -460,14 +460,14 @@
                             <div class="input">
                                 <div class="dollar-sign">$</div>
                                 <div class="vertical-line"></div>
-                                <!-- <label for="cash-amount" class="sr-only">Cash Rewards Calculator Input</label> -->
-                                <input class="user-input" type="text" id="cash-amount" placeholder="Enter amount" value="15000" min="1" step="1000" required />
+                                <!-- <label for="savings-calculator-credit-card-balance" class="sr-only">Cash Rewards Calculator Input</label> -->
+                                <input class="user-input" type="text" id="savings-calculator-credit-card-balance" placeholder="Enter amount" value="15000" min="1" step="1000" required />
                             </div>
                         </div>
                         <div class="slider-container">
                             <div class="label-input">
                                 <div id="min-savings-balance">$3</div>
-                                <input label="current balance slider" type="range" id="current-balance-slider" min="3" max="300000" value="15000" />
+                                <input label="current balance slider" type="range" id="savings-calculator-current-balance-slider" min="3" max="300000" value="15000" />
                                 <div id="max-savings-balance">$300,000</div>
                             </div>
                         </div>
@@ -482,15 +482,15 @@
                             <div class="input">
                                 <div class="dollar-sign">%</div>
                                 <div class="vertical-line"></div>
-                                <!-- <label for="cash-amount" class="sr-only">Cash Rewards Calculator Input</label> -->
-                                <input class="user-input" type="text" id="percent-amount" placeholder="Enter amount"
+                                <!-- <label for="savings-calculator-credit-card-balance" class="sr-only">Cash Rewards Calculator Input</label> -->
+                                <input class="user-input" type="text" id="savings-calculator-percent-amount" placeholder="Enter amount"
                                     value="20.56" min="1" required />
                             </div>
                         </div>
                         <div class="slider-container">
                             <div class="label-input apr-label">
                                 <div id="min-savings-balance">4.91%</div>
-                                <input label="credit card apr slider" type="range" id="credit-card-apr" min="4.91"
+                                <input label="credit card apr slider" type="range" id="savings-calculator-credit-card-apr" min="4.91"
                                     max="30" value="20.56" step="0.01" />
                                 <div id="max-savings-balance">30%</div>
                             </div>
@@ -505,7 +505,7 @@
                     </div>
                 </div>
                 <hr class="horizontal-line-desktop" />
-                <div class="reset-container">
+                <div class="savings-reset-container">
                     <div class="button-container">
                         <button class="reset-button">
                             <span class="reset-icon"><svg width="15" height="15" viewBox="0 0 20 19" fill="none"
@@ -538,27 +538,27 @@
         </div>
     </section>
     <script>
-        const cashInput = document.getElementById('cash-amount');
-        const percentInput = document.getElementById('percent-amount');
-        const answer = document.querySelectorAll('.savings-calculator-answer');
-        const resetButton = document.querySelector('.reset-container');
-        const currentBalanceSlider = document.querySelector('#current-balance-slider');
-        const creditCardAprSlider = document.querySelector('#credit-card-apr');
+        const savingsCalculatorCreditCardBalance = document.getElementById('savings-calculator-credit-card-balance');
+        const savingsCalculatorPercentInput = document.getElementById('savings-calculator-percent-amount');
+        const savingsCalculatorAnswer = document.querySelectorAll('.savings-calculator-answer');
+        const savingsCalculatorResetButton = document.querySelector('.savings-reset-container');
+        const savingsCalculatorCurrentBalanceSlider = document.querySelector('#savings-calculator-current-balance-slider');
+        const savingsCalculatorCreditCardAprSlider = document.querySelector('#savings-calculator-credit-card-apr');
 
         // Setting original values
-        const originalCashValue = cashInput.value;
-        const originalPercentValue = percentInput.value;
-        const originalSliderValue = currentBalanceSlider.value;
-        const originalCreditCardAprValue = creditCardAprSlider.value;
+        const originalSavingsCalculatorBalanceValue = savingsCalculatorCreditCardBalance.value;
+        const originalSavingsCalculatorPercentValue = savingsCalculatorPercentInput.value;
+        const originalSavingsCalculatorSliderBalanceValue = savingsCalculatorCurrentBalanceSlider.value;
+        const originalSavingsCalculatorCreditCardAprValue = savingsCalculatorCreditCardAprSlider.value;
 
         // Max values for inputs and sliders
-        const maxCashValue = 300000;
-        const maxPercentValue = 30;
+        const maxSavingsCalculatorBalanceValue = 300000;
+        const maxSavingsCalculatorPercentValue = 30;
 
-        // Variables for calculation
-        const promoRate = 4.90;
-        let cashAmount = originalCashValue;
-        let percentageAmount = originalPercentValue;
+        // Variables for savingsAverageCalculation
+        const savingsCalculatorPromoRate = 4.90;
+        let savingsCalculatorBalanceAmount = originalSavingsCalculatorBalanceValue;
+        let savingsCalculatorPercentageAmount = originalSavingsCalculatorPercentValue;
 
         // Setting max values for inputs
         // Adding commas to inputs
@@ -582,16 +582,16 @@
             });
         };
 
-        enforceNumericInput(cashInput, maxCashValue);
-        enforceNumericInput(percentInput, maxPercentValue);
+        enforceNumericInput(savingsCalculatorCreditCardBalance, maxSavingsCalculatorBalanceValue);
+        enforceNumericInput(savingsCalculatorPercentInput, maxSavingsCalculatorPercentValue);
 
         const removeCommaFromInputCalculator = (value) => parseInt(value.replace(/,/g, ""), 10) || 0;
 
-        const calculation = (cashValue, percentValue, currentPromoRate) => {
+        const savingsAverageCalculation = (cashValue, percentValue, currentsavingsCalculatorPromoRate) => {
             const numericCash = removeCommaFromInputCalculator(cashValue);
-            const promoRateDecimal = currentPromoRate / 100;
+            const savingsCalculatorPromoRateDecimal = currentsavingsCalculatorPromoRate / 100;
             const percentDecimal = percentValue / 100;
-            const monthlyDifference = (percentDecimal - promoRateDecimal) / 12;
+            const monthlyDifference = (percentDecimal - savingsCalculatorPromoRateDecimal) / 12;
             return (numericCash * monthlyDifference).toFixed(2);
         };
 
@@ -603,70 +603,70 @@
         };
 
         const updateAnswer = () => {
-            answer.forEach(ans => {
-                ans.textContent = `$${parseFloat(calculation(cashAmount, percentageAmount, promoRate), 10).toLocaleString()}`;
+            savingsCalculatorAnswer.forEach(ans => {
+                ans.textContent = `$${parseFloat(savingsAverageCalculation(savingsCalculatorBalanceAmount, savingsCalculatorPercentageAmount, savingsCalculatorPromoRate), 10).toLocaleString()}`;
             });
         };
 
-        cashInput.addEventListener('input', () => {
+        savingsCalculatorCreditCardBalance.addEventListener('input', () => {
             // adjusting both the input and slider values
-            cashAmount = cashInput.value;
-            currentBalanceSlider.value = removeCommaFromInputCalculator(cashAmount);
-            adjustSliderBackground(currentBalanceSlider);
+            savingsCalculatorBalanceAmount = savingsCalculatorCreditCardBalance.value;
+            savingsCalculatorCurrentBalanceSlider.value = removeCommaFromInputCalculator(savingsCalculatorBalanceAmount);
+            adjustSliderBackground(savingsCalculatorCurrentBalanceSlider);
             updateAnswer();
         });
 
-        currentBalanceSlider.addEventListener('input', () => {
+        savingsCalculatorCurrentBalanceSlider.addEventListener('input', () => {
             // adjusting both the input and slider values
-            cashAmount = currentBalanceSlider.value;
-            cashInput.value = parseInt(cashAmount, 10).toLocaleString(); // Ensure commas are added
-            adjustSliderBackground(currentBalanceSlider);
+            savingsCalculatorBalanceAmount = savingsCalculatorCurrentBalanceSlider.value;
+            savingsCalculatorCreditCardBalance.value = parseInt(savingsCalculatorBalanceAmount, 10).toLocaleString(); // Ensure commas are added
+            adjustSliderBackground(savingsCalculatorCurrentBalanceSlider);
             updateAnswer();
         });
 
-        percentInput.addEventListener('input', () => {
+        savingsCalculatorPercentInput.addEventListener('input', () => {
             // adjusting both the input and slider values
-            percentageAmount = percentInput.value;
-            creditCardAprSlider.value = percentageAmount;
-            adjustSliderBackground(creditCardAprSlider, true);
+            savingsCalculatorPercentageAmount = savingsCalculatorPercentInput.value;
+            savingsCalculatorCreditCardAprSlider.value = savingsCalculatorPercentageAmount;
+            adjustSliderBackground(savingsCalculatorCreditCardAprSlider, true);
             updateAnswer();
         });
 
-        creditCardAprSlider.addEventListener('input', () => {
+        savingsCalculatorCreditCardAprSlider.addEventListener('input', () => {
             // adjusting both the input and slider values
-            percentageAmount = creditCardAprSlider.value;
-            percentInput.value = percentageAmount;
-            adjustSliderBackground(creditCardAprSlider, true);
+            savingsCalculatorPercentageAmount = savingsCalculatorCreditCardAprSlider.value;
+            savingsCalculatorPercentInput.value = savingsCalculatorPercentageAmount;
+            adjustSliderBackground(savingsCalculatorCreditCardAprSlider, true);
             updateAnswer();
         });
 
-        resetButton.addEventListener('click', () => {
-            cashInput.value = originalCashValue;
-            percentInput.value = originalPercentValue;
-            currentBalanceSlider.value = originalSliderValue;
-            creditCardAprSlider.value = originalCreditCardAprValue;
-            cashAmount = originalCashValue;
-            percentageAmount = originalPercentValue;
+        savingsCalculatorResetButton.addEventListener('click', () => {
+            savingsCalculatorCreditCardBalance.value = originalSavingsCalculatorBalanceValue;
+            savingsCalculatorPercentInput.value = originalSavingsCalculatorPercentValue;
+            savingsCalculatorCurrentBalanceSlider.value = originalSavingsCalculatorSliderBalanceValue;
+            savingsCalculatorCreditCardAprSlider.value = originalSavingsCalculatorCreditCardAprValue;
+            savingsCalculatorBalanceAmount = originalSavingsCalculatorBalanceValue;
+            savingsCalculatorPercentageAmount = originalSavingsCalculatorPercentValue;
             updateAnswer();
-            adjustSliderBackground(currentBalanceSlider);
-            adjustSliderBackground(creditCardAprSlider, true);
+            adjustSliderBackground(savingsCalculatorCurrentBalanceSlider);
+            adjustSliderBackground(savingsCalculatorCreditCardAprSlider, true);
         });
 
         updateAnswer();
-        adjustSliderBackground(currentBalanceSlider);
-        adjustSliderBackground(creditCardAprSlider, true);
+        adjustSliderBackground(savingsCalculatorCurrentBalanceSlider);
+        adjustSliderBackground(savingsCalculatorCreditCardAprSlider, true);
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            cashInput.value = parseInt(cashInput.value || 0, 10).toLocaleString(); // Format with commas
-            percentInput.value = parseInt(percentInput.value || 0, 10).toLocaleString(); // Format if necessary
-            adjustSliderBackground(currentBalanceSlider);
-            adjustSliderBackground(creditCardAprSlider, true);
-            currentBalanceSlider.step = 500;
-            creditCardAprSlider.step = .5;
+            savingsCalculatorCreditCardBalance.value = parseInt(savingsCalculatorCreditCardBalance.value || 0, 10).toLocaleString(); // Format with commas
+            savingsCalculatorPercentInput.value = parseInt(savingsCalculatorPercentInput.value || 0, 10).toLocaleString(); // Format if necessary
+            adjustSliderBackground(savingsCalculatorCurrentBalanceSlider);
+            adjustSliderBackground(savingsCalculatorCreditCardAprSlider, true);
+            savingsCalculatorCurrentBalanceSlider.step = 500;
+            savingsCalculatorCreditCardAprSlider.step = .5;
 
-            answer.forEach(ans => {
-                ans.textContent = `$${insertCommaIntoInputCalculator(calculation(cashAmount, percentageAmount, promoRate))}`;
+            savingsCalculatorAnswer.forEach(ans => {
+                ans.textContent = `$${insertCommaIntoInputCalculator(savingsAverageCalculation(savingsCalculatorBalanceAmount, savingsCalculatorPercentageAmount, savingsCalculatorPromoRate))}`;
             });
         });
 
