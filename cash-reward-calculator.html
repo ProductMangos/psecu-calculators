@@ -16,7 +16,7 @@
         body {
             font-family: "Lexend Deca", serif;
         }
-        #cash-savings-calculator-section {
+        #cash-rewards-calculator-section {
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -284,12 +284,13 @@
             }
 
             .answer-text-mobile {
+                display: flex;
+                justify-content: space-between;
                 width: 100%;
-                font-size: 12px;
+                font-size: clamp(0.75rem, 0.5695rem + 0.8969vw, 1rem);
                 line-height: 16px;
-                /* margin-top: 2rem; */
                 font-weight: 500;
-                padding: 2rem 0 .5rem 0;
+                padding: 2rem 1rem .5rem 1rem;
                 
                 @media screen and (min-width: 768px) {
                     display: none;
@@ -301,16 +302,18 @@
                 opacity: .6;
             }
 
-            .savings-calculator-answer {
+            .cash-rewards-calculator-monthly-payment, .cash-rewards-calculator-apr {
                 color: #043436;
                 font-weight: 700;
-                font-size: 45px;
+                font-size: clamp(1.75rem, -0.1452rem + 8.417vw, 4.375rem);
+
                 line-height: 0px;
-                margin: 2rem 0 3rem 0;
+                margin: 1.5rem 0 3rem 0;
 
                 @media screen and (min-width: 768px) {
                     font-size: 70px;
-                    margin: 2.5rem 0 5rem 0;
+                    margin-bottom: 5rem;
+                    margin-top: 10%;
 
                 }
             }
@@ -450,59 +453,60 @@
     </style>
 </head>
 <body>
-    <section id="cash-savings-calculator-section">
+    <section id="cash-rewards-calculator-section">
         <div class="main-container">
             <div class="layout">
-                <h2 class="title">Calculate Your Savings</h2>
+                <h2 class="title">Calculate Your Personal Loan Payment</h2>
                 <p class="subtitle">You could save when you transfer your balance to our Classic Card and enjoy our promotional rate. Since we have no PSECU balance transfer fee or annual fee, the savings stay with you!</p>
                 <div class="calculator-container">
                     <div class="calculator-form">
                         <div class="input-container">
-                            <div class="input-title">What is the balance on your current credit card?</div>
+                            <div class="input-title">How much do you want to borrow?</div>
                             <div class="input">
                                 <div class="dollar-sign">$</div>
                                 <div class="vertical-line"></div>
-                                <!-- <label for="savings-calculator-credit-card-balance" class="sr-only">Cash Rewards Calculator Input</label> -->
-                                <input class="user-input" type="text" id="savings-calculator-credit-card-balance" placeholder="Enter amount" value="15000" min="1" step="1000" required />
+                                <!-- <label for="cash-rewards-calculator-credit-card-balance" class="sr-only">Cash Rewards Calculator Input</label> -->
+                                <input class="user-input" type="text" id="cash-rewards-calculator-credit-card-balance" placeholder="Enter amount" value="15000" min="1" step="1000" required />
                             </div>
                         </div>
                         <div class="slider-container">
                             <div class="label-input">
                                 <div id="min-savings-balance">$3</div>
-                                <input label="current balance slider" type="range" id="savings-calculator-current-balance-slider" min="3" max="300000" value="15000" />
+                                <input label="current balance slider" type="range" id="cash-rewards-calculator-current-balance-slider" min="3" max="300000" value="15000" />
                                 <div id="max-savings-balance">$300,000</div>
                             </div>
                         </div>
                         <div class="input-container">
                             <div class="input-title-container">
                                 <!-- input field from module below -->
-                                <div class="input-title">What is the interest rate on your current card?</div>
+                                <div class="input-title">How long to pay it off?</div>
                                 <!-- input field from module above-->
-                                <div class="input-subtitle">The average credit card APR in the United States is 20.56%.
-                                </div>
                             </div>
                             <div class="input">
                                 <div class="dollar-sign">%</div>
                                 <div class="vertical-line"></div>
-                                <!-- <label for="savings-calculator-credit-card-balance" class="sr-only">Cash Rewards Calculator Input</label> -->
-                                <input class="user-input" type="text" id="savings-calculator-percent-amount" placeholder="Enter amount"
+                                <!-- <label for="cash-rewards-calculator-credit-card-balance" class="sr-only">Cash Rewards Calculator Input</label> -->
+                                <input class="user-input" type="text" id="cash-rewards-calculator-percent-amount" placeholder="Enter amount"
                                     value="20.56" min="1" required />
                             </div>
                         </div>
                         <div class="slider-container">
                             <div class="label-input apr-label">
                                 <div id="min-savings-balance">4.91%</div>
-                                <input label="credit card apr slider" type="range" id="savings-calculator-credit-card-apr" min="4.91"
+                                <input label="credit card apr slider" type="range" id="cash-rewards-calculator-credit-card-apr" min="4.91"
                                     max="30" value="20.56" step="0.01" />
                                 <div id="max-savings-balance">30%</div>
                             </div>
                         </div>
                         <div class="answer-text-mobile">
-                            <p class="answer-start">You could save an average of</p>
-                            <p class="savings-calculator-answer">$53,380.13</p>
-                            <p class="answer-final-text"><span class="answer-month">per month </span> when you transfer
-                                your balance to our Classic Card and enjoy our promotional rate. Since we have no PSECU
-                                balance transfer fee or annual fee, the savings stay with you</p>
+                            <div class="answer-container">
+                                <p class="answer-start-monthy-payment">Monthly Payment</p>
+                                <p class="cash-rewards-calculator-monthly-payment">$53,380.13</p>
+                            </div>
+                            <div class="answer-container">
+                                <p class="answer-start-apr">APR</p>
+                                <p class="cash-rewards-calculator-apr">60.74%</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -525,10 +529,7 @@
             <div class="answer-container">
                 <div class="answer-text-desktop">
                     <p class="answer-start">You could save an average of</p>
-                    <p class="savings-calculator-answer">$53,380.13</p>
-                    <p class="answer-final-text"><span class="answer-month">per month </span> when you transfer your
-                        balance to our Classic Card and enjoy our promotional rate. Since we have no PSECU balance
-                        transfer fee or annual fee, the savings stay with you</p>
+                    <p class="cash-rewards-calculator-monthly-payment">$53,380.13</p>
                 </div>
                 <div class="disclosures-container">
                     <p class="disclosures"> 1This estimate is provided for informational purposes only. Your actual avings may vary.</p>
@@ -540,12 +541,12 @@
         </div>
     </section>
     <script>
-        const savingsCalculatorCreditCardBalance = document.getElementById('savings-calculator-credit-card-balance');
-        const savingsCalculatorPercentInput = document.getElementById('savings-calculator-percent-amount');
-        const savingsCalculatorAnswer = document.querySelectorAll('.savings-calculator-answer');
+        const savingsCalculatorCreditCardBalance = document.getElementById('cash-rewards-calculator-credit-card-balance');
+        const savingsCalculatorPercentInput = document.getElementById('cash-rewards-calculator-percent-amount');
+        const savingsCalculatorAnswer = document.querySelectorAll('.cash-rewards-calculator-monthly-payment');
         const savingsCalculatorResetButton = document.querySelector('.savings-reset-container');
-        const savingsCalculatorCurrentBalanceSlider = document.querySelector('#savings-calculator-current-balance-slider');
-        const savingsCalculatorCreditCardAprSlider = document.querySelector('#savings-calculator-credit-card-apr');
+        const savingsCalculatorCurrentBalanceSlider = document.querySelector('#cash-rewards-calculator-current-balance-slider');
+        const savingsCalculatorCreditCardAprSlider = document.querySelector('#cash-rewards-calculator-credit-card-apr');
 
         // Setting original values
         const originalSavingsCalculatorBalanceValue = savingsCalculatorCreditCardBalance.value;
