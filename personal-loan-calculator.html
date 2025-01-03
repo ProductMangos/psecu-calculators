@@ -560,13 +560,13 @@
                                     name="personal-loan-payoff-loan-term"
                                     class="personal-loan-payoff-loan-term"
                                 >
-                                    <option value="12" data-apr="12">12 months</option>
-                                    <option value="24" data-apr="24">24 months</option>
-                                    <option value="36" data-apr="36">36 months</option>
-                                    <option value="48" data-apr="48">48 months</option>
-                                    <option value="60" data-apr="60">60 months</option>
-                                    <option value="72" data-apr="72">72 months</option>
-                                    <option value="84" data-apr="84">84 months</option>
+                                    <option value="12" data-apr="9.74%">12 months</option>
+                                    <option value="24" data-apr="9.74%">24 months</option>
+                                    <option value="36" data-apr="9.74%">36 months</option>
+                                    <option value="48" data-apr="10.74%">48 months</option>
+                                    <option value="60" data-apr="10.74%">60 months</option>
+                                    <option value="72" data-apr="12.74%">72 months</option>
+                                    <option value="84" data-apr="12.74%">84 months</option>
                                 </select>
                             </div>
                         </div>
@@ -627,7 +627,9 @@
     <script>
         const personalLoanCalculatorBorrowBalance = document.getElementById('personal-loans-calculator-borrow-amount');
         const personalLoanCalculatorPayoffLoanTerm = document.querySelector('#personal-loan-payoff-loan-term');
-        const personalLoanCalculatorAnswer = document.querySelectorAll('.personal-loan-calculator-monthly-payment');
+        const personalLoanCalculatorAnswerAverage = document.querySelectorAll('.personal-loan-calculator-monthly-payment');
+        const personalLoanCalculatorAnswerAPR = document.querySelectorAll('.personal-loan-calculator-apr');
+
         const personalLoanCalculatorResetButton = document.querySelector('.personal-loan-reset-container');
         const personalLoanCalculatorCurrentBorrowSlider = document.querySelector('#personal-loan-borrow-slider');
         const personalLoanCalculatorPayoffSlider = document.querySelector('#personal-loan-payoff-slider');
@@ -680,28 +682,65 @@
             slider.style.background = `linear-gradient(to right, #177D78 0%, #177D78 ${sliderValue}%, #AEB0B5 ${sliderValue}%, #AEB0B5 100%)`;
         };
 
+        const personalLoanCalculation = (selectedOption) => {
+            // Get the currently selected option
+            // Extract the data-apr value
+            const currentAPR = selectedOption.getAttribute('data-apr');
+            
+            let aprNum = currentAPR.replace("%", "");
+            let P = personalLoansCalculatorBorrowAmount;
+            let r = aprNum / 12 / 100;
+            let n = selectedOption.value;
+
+            let M = (P * r) / (1 - Math.pow(1 + r, -n));
+
+            return M;
+
+        }
+
+
+        const updatePersonalLoansCalculatorAnswer = (apr) => {
+            const selectedOption = personalLoanCalculatorPayoffLoanTerm.options[personalLoanCalculatorPayoffLoanTerm.selectedIndex];
+
+            personalLoanCalculatorAnswerAverage.forEach(ans => {
+                ans.textContent = `$${addCommasToInputCalculator(personalLoanCalculation(selectedOption))}`;
+            })
+
+            personalLoanCalculatorAnswerAPR.forEach(ans => {
+                ans.textContent = `${selectedOption.getAttribute('data-apr')}`;
+            })
+        }
+
+
         personalLoanCalculatorBorrowBalance.addEventListener('input', () => {
             personalLoansCalculatorBorrowAmount = personalLoanCalculatorBorrowBalance.value;
             personalLoanCalculatorCurrentBorrowSlider.value = removeCommaFromInputCalculator(personalLoansCalculatorBorrowAmount);
             adjustSavingsCalculatorSliderBackground(personalLoanCalculatorCurrentBorrowSlider);
+            updatePersonalLoansCalculatorAnswer();
+
         });
 
         personalLoanCalculatorCurrentBorrowSlider.addEventListener('input', () => {
             personalLoansCalculatorBorrowAmount = personalLoanCalculatorCurrentBorrowSlider.value;
             personalLoanCalculatorBorrowBalance.value = addCommasToInputCalculator(personalLoansCalculatorBorrowAmount);
             adjustSavingsCalculatorSliderBackground(personalLoanCalculatorCurrentBorrowSlider);
+            updatePersonalLoansCalculatorAnswer();
+
         });
 
         personalLoanCalculatorPayoffLoanTerm.addEventListener('input', () => {
             personalLoanCalculatorPayoffLoanTermAmount = personalLoanCalculatorPayoffLoanTerm.value;
             personalLoanCalculatorPayoffSlider.value = removeCommaFromInputCalculator(personalLoanCalculatorPayoffLoanTermAmount);
             adjustSavingsCalculatorSliderBackground(personalLoanCalculatorPayoffSlider, true);
+            updatePersonalLoansCalculatorAnswer();
         });
 
         personalLoanCalculatorPayoffSlider.addEventListener('input', () => {
             personalLoanCalculatorPayoffLoanTermAmount = personalLoanCalculatorPayoffSlider.value;
             personalLoanCalculatorPayoffLoanTerm.value = addCommasToInputCalculator(personalLoanCalculatorPayoffLoanTermAmount); 
             adjustSavingsCalculatorSliderBackground(personalLoanCalculatorPayoffSlider, true);
+            updatePersonalLoansCalculatorAnswer();
+
         });
 
         document.addEventListener('DOMContentLoaded', () => {
