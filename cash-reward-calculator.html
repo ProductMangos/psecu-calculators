@@ -370,18 +370,22 @@
             .cash-rewards-reset-container {
                 display: flex;
                 align-items: center;
-                cursor: pointer;
-                margin: 1rem auto;
-                padding: 0 .5rem;
+                margin: 1rem;
 
                 @media screen and (min-width: 768px) {
                     justify-content: flex-end;
                 }
 
                 .button-container {
+                    cursor: pointer;
+
                     display: flex;
                     align-items: center;
                     justify-content: flex-end;
+                    
+                    @media screen and (min-width: 768px) {
+                        width: 100px;
+                    }
                 }
 
 
@@ -612,7 +616,7 @@
     </section>
     <script>
         const cashRewardsCalculatorPurchaseInput = document.getElementById('cash-rewards-calculator-purchase-amount');
-        const cashRewardsCalculatorResetButton = document.querySelector('.cash-rewards-reset-container');
+        const cashRewardsCalculatorResetButton = document.querySelector('.button-container ');
         const cashRewardsCalculatorPurchaseInputSlider = document.querySelector('#cash-rewards-purchase-amount-slider');
         const cashRewardsCalculatorAnswer1dot5Percent = document.querySelectorAll('.cash-rewards-calculator-1-5-reward-percent');
         const cashRewardsCalculatorAnswer2Percent = document.querySelectorAll('.cash-rewards-calculator-2-reward-percent');
