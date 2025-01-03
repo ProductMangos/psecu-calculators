@@ -29,7 +29,7 @@
                 @media screen and (min-width: 768px) {
                     display: flex;
                     justify-content: space-around;
-                    align-items: center;
+                    align-items: flex-start;
                     width: 100%;
                     
                 }
@@ -270,10 +270,10 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-
+                width: 100%;
                 @media screen and (min-width: 768px) {
-                    padding: 2rem;
                     margin-top: 2.5rem;
+                    max-width: 624px;
                 }
             }
 
@@ -289,6 +289,10 @@
                     display: flex;
                     margin: 1rem auto;
                 }
+            }
+
+            .answer-header {
+                padding-bottom: .5rem;
             }
 
             .answer-text-container {
@@ -424,7 +428,7 @@
                     background-color: gainsboro;
                     padding: 1rem;
                     margin-top: 1rem;
-                    height: 150px;
+                    height: 120px;
                 }
 
                 .disclosures {
@@ -435,7 +439,7 @@
                     width: 100%;
 
                     @media screen and (min-width: 768px) {
-                        max-width: 498px;
+                        /* max-width: 498px; */
                         line-height: 22.4px;
 
                     }
@@ -465,7 +469,7 @@
 
                     @media screen and (min-width: 768px) {
                         position: relative;
-                        top: 2.5rem;
+                        top: 1rem;
 
                     }
                 }
@@ -583,7 +587,7 @@
                 <div class="answer-text-desktop">
                     <div class="answer-text-container">
                         <p class="answer-header">1.5% Reward</p>
-                        <p class="answer-start">You can earn 1.5% cash rewards on purchases with a Founder’s Card alone.</p>
+                        <p class="answer-start" style="height: 60px;">You can earn 1.5% cash rewards on purchases with a Founder’s Card alone.</p>
                         <p class="cash-rewards-calculator-monthly-payment">$131.94</p>
                     </div>
                     <div class="answer-text-container">
@@ -593,7 +597,7 @@
                     </div>
                 </div>
                 <div class="disclosures-container">
-                    <p class="disclosures">For informational purposes only. Rate assumes excellent creditworthiness; your rate may differ from the rate(s) down below. Actual terms will vary. See below for important details.</p>
+                    <p class="disclosures">1This estimate is provided for informational purposes only. Your actual savings may vary. Some exclusions may apply. See the Visa® Founder's Card and Visa® Alumni Rewards Card Rewards Program Terms and Conditions for full details.</p>
                     <div class="cta-container">
                         <button class="cta">Apply Today</button>
                     </div>
