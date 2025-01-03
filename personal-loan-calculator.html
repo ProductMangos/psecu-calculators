@@ -753,11 +753,15 @@
             personalLoanCalculatorPayoffSlider.step = 12;
         });
 
-    //    const updatePersonalLoanCalculatorAnswer = () => {
-    //     let 
-    //     let M = (P * r) / (1 - Math.pow(1 + r, -n));
-    //    }
-
+        personalLoanCalculatorResetButton.addEventListener('click', () => {
+            personalLoanCalculatorBorrowBalance.value =  addCommasToInputCalculator(originalPersonalLoanCalculatorBorrowValue);
+            personalLoanCalculatorPayoffLoanTerm.value = addCommasToInputCalculator(originalPersonalLoanCalculatorSliderPayoffValue);
+            personalLoanCalculatorCurrentBorrowSlider.value = originalPersonalLoanCalculatorSliderBorrowValue;
+            personalLoanCalculatorPayoffSlider.value = originalPersonalLoanCalculatorSliderPayoffValue;
+            adjustSavingsCalculatorSliderBackground(personalLoanCalculatorCurrentBorrowSlider);
+            adjustSavingsCalculatorSliderBackground(personalLoanCalculatorPayoffSlider, true);
+            updatePersonalLoansCalculatorAnswer();
+        });
 
     </script>
 </body>
