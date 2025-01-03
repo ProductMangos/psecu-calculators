@@ -548,25 +548,25 @@
                             <div class="input">
                                 <div class="dollar-sign">$</div>
                                 <div class="vertical-line"></div>
-                                <!-- <label for="cash-rewards-calculator-borrow-amount" class="sr-only">Cash Rewards Calculator Input</label> -->
-                                <input class="user-input" type="text" id="cash-rewards-calculator-borrow-amount" placeholder="Enter amount" value="20000" min="1" step="1000" required />
+                                <!-- <label for="cash-rewards-calculator-purchase-amount" class="sr-only">Cash Rewards Calculator Input</label> -->
+                                <input class="user-input" type="text" id="cash-rewards-calculator-purchase-amount" placeholder="Enter amount" value="20000" min="1" step="1000" required />
                             </div>
                         </div>
                         <div class="slider-container">
                             <div class="label-input">
                                 <div id="cash-rewards-min-savings-balance">$500</div>
-                                <input label="cash rewards min borrow slider" type="range" id="cash-rewards-borrow-slider" min="500" max="30000" value="20000" />
+                                <input label="cash rewards min borrow slider" type="range" id="cash-rewards-purchase-amount-slider" min="500" max="30000" value="20000" />
                                 <div id="cash-rewards-max-savings-balance">$30,000</div>
                             </div>
                         </div>
                         <div class="answer-text-mobile">
                             <div class="answer-text-container">
                                 <p class="answer-header">1.5% Reward</p>
-                                <p class="cash-rewards-calculator-monthly-payment">$131.94</p>
+                                <p class="cash-rewards-calculator-monthly-payment cash-rewards-calculator-1-5-reward-percent">$131.94</p>
                             </div>
                             <div class="answer-text-container">
                                 <p class="answer-header">2% Reward</p>
-                                <p class="cash-rewards-calculator-monthly-payment">$175.92</p>
+                                <p class="cash-rewards-calculator-monthly-payment cash-rewards-calculator-2-reward-percent">$175.92</p>
                             </div>
                         </div>
                         
@@ -593,12 +593,12 @@
                     <div class="answer-text-container">
                         <p class="answer-header">1.5% Reward</p>
                         <p class="answer-start" style="height: 60px;">You can earn 1.5% cash rewards on purchases with a Founder’s Card alone.</p>
-                        <p class="cash-rewards-calculator-monthly-payment">$131.94</p>
+                        <p class="cash-rewards-calculator-monthly-payment cash-rewards-calculator-1-5-reward-percent">$131.94</p>
                     </div>
                     <div class="answer-text-container">
                         <p class="answer-header">2% Reward</p>
                         <p class="answer-start">You can earn 2% cash rewards on purchases with a Founder’s Card and a qualifying PSECU checking account and direct deposit.</p>
-                        <p class="cash-rewards-calculator-monthly-payment">$175.92</p>
+                        <p class="cash-rewards-calculator-monthly-payment cash-rewards-calculator-2-reward-percent">$175.92</p>
                     </div>
                 </div>
                 <div class="disclosures-container">
@@ -611,27 +611,24 @@
         </div>
     </section>
     <script>
-        const cashRewardsCalculatorBorrowBalance = document.getElementById('cash-rewards-calculator-borrow-amount');
-        const cashRewardsCalculatorPayoffLoanTerm = document.querySelector('#cash-rewards-payoff-loan-term');
-        const cashRewardsCalculatorAnswer = document.querySelectorAll('.cash-rewards-calculator-monthly-payment');
+        const cashRewardsCalculatorPurchaseInput = document.getElementById('cash-rewards-calculator-purchase-amount');
         const cashRewardsCalculatorResetButton = document.querySelector('.cash-rewards-reset-container');
-        const cashRewardsCalculatorCurrentBorrowSlider = document.querySelector('#cash-rewards-borrow-slider');
-        const cashRewardsCalculatorPayoffSlider = document.querySelector('#cash-rewards-payoff-slider');
+        const cashRewardsCalculatorPurchaseInputSlider = document.querySelector('#cash-rewards-purchase-amount-slider');
+        const cashRewardsCalculatorAnswer1dot5Percent = document.querySelectorAll('.cash-rewards-calculator-1-5-reward-percent');
+        const cashRewardsCalculatorAnswer2Percent = document.querySelectorAll('.cash-rewards-calculator-2-reward-percent');
 
         // Setting original values
-        const originalCashRewardsCalculatorBorrowValue = cashRewardsCalculatorBorrowBalance.value;
-        const originalCashRewardsCalculatorPayoffValue = cashRewardsCalculatorPayoffLoanTerm.value;
-        const originalCashRewardsCalculatorSliderBorrowValue = cashRewardsCalculatorCurrentBorrowSlider.value;
-        const originalCashRewardsCalculatorSliderPayoffValue = cashRewardsCalculatorPayoffSlider.value;
+        const originalCashRewardsCalculatorPurchaseInput = cashRewardsCalculatorPurchaseInput.value;
+        const originalCashRewardsCalculatorSliderPurchaseInput = cashRewardsCalculatorPurchaseInputSlider.value;
 
-        // Max values for inputs and sliders
-        const maxCashRewardsCalculatorBorrowValue = 300000;
-        const maxCashRewardsCalculatorPayoffValue = 30;
+        // Setting Values
+        let cashRewardsCalculatorPurchaseAmount = originalCashRewardsCalculatorPurchaseInput;
 
-        // Rate Value
-        const cashRewardsCalculatorRate = 4.90;
-        let cashRewardsCalculatorBorrowAmount = originalCashRewardsCalculatorBorrowValue;
-        let cashRewardsCalculatorPayoffLoanTermAmount = originalCashRewardsCalculatorPayoffValue;
+        // Setting max values
+        let maxCashRewardsCalculatorPurchaseAmount = 30000;
+        let maxCashRewardsCalculatorSliderPurchaseAmount = 30000;
+        let rewards1dot5 = 1.5;
+        let rewards2 = 2;
 
         const enforceSavingsCalculatorNumericInput = (input, maxValue) => {
             input.addEventListener('input', function () {
@@ -653,20 +650,11 @@
             });
         };
 
-        enforceSavingsCalculatorNumericInput(cashRewardsCalculatorBorrowBalance, maxCashRewardsCalculatorBorrowValue);
-        // enforceSavingsCalculatorNumericInput(cashRewardsCalculatorPayoffLoanTerm, maxCashRewardsCalculatorPayoffValue);
+        enforceSavingsCalculatorNumericInput(cashRewardsCalculatorPurchaseInput, maxCashRewardsCalculatorPurchaseAmount);
 
+        const addCommasToInputCalculator = (value) => parseFloat(value || 0, 10).toLocaleString(); 
         const removeCommaFromInputCalculator = (value) => parseInt(value.replace(/,/g, ""), 10) || 0;
 
-        const savingsAverageCalculation = (cashValue, percentValue, currentCashRewardsCalculatorRate) => {
-            const numericCash = removeCommaFromInputCalculator(cashValue);
-            console.log(numericCash);
-            const cashRewardsCalculatorRateDecimal = currentCashRewardsCalculatorRate / 100;
-            console.log(cashRewardsCalculatorRateDecimal);
-            const percentDecimal = percentValue / 100;
-            const monthlyDifference = (percentDecimal - cashRewardsCalculatorRateDecimal) / 12;
-            return (numericCash * monthlyDifference).toFixed(2);
-        };
 
         const adjustSavingsCalculatorSliderBackground = (slider, isPercent) => {
             const sliderValue = isPercent
@@ -675,19 +663,55 @@
             slider.style.background = `linear-gradient(to right, #177D78 0%, #177D78 ${sliderValue}%, #AEB0B5 ${sliderValue}%, #AEB0B5 100%)`;
         };
 
+        const cashRewardsCalculation = (rewardsPercent, purchaseAmount) => {
+            return addCommasToInputCalculator(((rewardsPercent / 100) * removeCommaFromInputCalculator(purchaseAmount)).toFixed(2));
+        }
+
         const updateSavingsCalculatorAnswer = () => {
-            cashRewardsCalculatorAnswer.forEach(ans => {
-                ans.textContent = `$${parseFloat(savingsAverageCalculation(cashRewardsCalculatorBorrowAmount, cashRewardsCalculatorPayoffLoanTerm, cashRewardsCalculatorRate), 10).toLocaleString()}`;
+            cashRewardsCalculatorAnswer1dot5Percent.forEach(ans => {
+                ans.textContent = `$${cashRewardsCalculation(rewards1dot5, cashRewardsCalculatorPurchaseAmount)}`;
             });
+
+            cashRewardsCalculatorAnswer2Percent.forEach(ans => {
+                ans.textContent = `$${cashRewardsCalculation(rewards2, cashRewardsCalculatorPurchaseAmount)}`;
+
+            })
         };
 
-        cashRewardsCalculatorBorrowBalance.addEventListener('input', () => {
+        cashRewardsCalculatorPurchaseInput.addEventListener('input', () => {
             // adjusting both the input and slider values
-            cashRewardsCalculatorBorrowAmount = cashRewardsCalculatorBorrowBalance.value;
-            
+            cashRewardsCalculatorPurchaseAmount = cashRewardsCalculatorPurchaseInput.value;
+            cashRewardsCalculatorPurchaseInputSlider.value = removeCommaFromInputCalculator(cashRewardsCalculatorPurchaseAmount);
+            adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
             updateSavingsCalculatorAnswer();
-        
         });
+
+        cashRewardsCalculatorPurchaseInputSlider.addEventListener('input', () => {
+            // adjusting both the input and slider values
+            cashRewardsCalculatorPurchaseAmount = cashRewardsCalculatorPurchaseInputSlider.value;
+            cashRewardsCalculatorPurchaseInput.value = parseInt(cashRewardsCalculatorPurchaseAmount, 10).toLocaleString(); // Ensure commas are added
+            adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
+            updateSavingsCalculatorAnswer();
+
+        });
+
+        cashRewardsCalculatorResetButton.addEventListener("click", () => {
+            cashRewardsCalculatorPurchaseInputSlider.value = originalCashRewardsCalculatorSliderPurchaseInput;
+            cashRewardsCalculatorPurchaseInput.value = addCommasToInputCalculator(originalCashRewardsCalculatorPurchaseInput);
+            cashRewardsCalculatorPurchaseAmount = originalCashRewardsCalculatorPurchaseInput;
+            adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
+            updateSavingsCalculatorAnswer();
+        })
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // adjusting both the input and slider values
+            cashRewardsCalculatorPurchaseAmount =  addCommasToInputCalculator(cashRewardsCalculatorPurchaseInputSlider.value);
+            cashRewardsCalculatorPurchaseInput.value =  cashRewardsCalculatorPurchaseAmount;
+            adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
+            cashRewardsCalculatorPurchaseInputSlider.step = 500;
+                
+        });
+
     </script>
 </body>
 </html>
