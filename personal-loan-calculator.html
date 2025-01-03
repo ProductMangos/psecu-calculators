@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cash Reward Calculators</title>
+    <title>Personal Loan Calculators</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
@@ -203,8 +203,8 @@
             }
 
 
-            #cash-rewards-min-savings-balance,
-            #cash-rewards-max-savings-balance {
+            #personal-loan-min-savings-balance,
+            #personal-loan-max-savings-balance {
                 position: relative;
                 font-weight: 400;
                 z-index: 1;
@@ -315,7 +315,7 @@
             }
 
 
-            .cash-rewards-calculator-monthly-payment, .cash-rewards-calculator-apr {
+            .personal-loan-calculator-monthly-payment, .personal-loan-calculator-apr {
                 color: #043436;
                 font-weight: 700;
                 font-size: clamp(1.75rem, -0.1452rem + 8.417vw, 4.375rem);
@@ -332,11 +332,11 @@
                 }
             }
 
-            .cash-rewards-calculator-monthly-payment {
+            .personal-loan-calculator-monthly-payment {
                 margin: 1.7rem 0;
             }
 
-            .cash-rewards-calculator-apr {
+            .personal-loan-calculator-apr {
                 margin-top: 1.6rem;
                 margin-bottom: 1.8rem;
             }
@@ -353,7 +353,7 @@
             }
 
 
-            .cash-rewards-reset-container {
+            .personal-loan-reset-container {
                 display: flex;
                 align-items: center;
                 cursor: pointer;
@@ -485,7 +485,7 @@
                 .dropdown-icon:active {
                     transform: rotate(180deg);
                 }
-                .cash-rewards-payoff-loan-term  {
+                .personal-loan-payoff-loan-term  {
                     width: 100%;
                     display: flex;
                     align-items: center;
@@ -535,16 +535,16 @@
                             <div class="input">
                                 <div class="dollar-sign">$</div>
                                 <div class="vertical-line"></div>
-                                <!-- <label for="cash-rewards-calculator-borrow-amount" class="sr-only">Cash Rewards Calculator Input</label> -->
-                                <input class="user-input" type="text" id="cash-rewards-calculator-borrow-amount" placeholder="Enter amount" value="15000" min="1" step="1000" required />
+                                <!-- <label for="personal-loans-calculator-borrow-amount" class="sr-only">Cash Rewards Calculator Input</label> -->
+                                <input class="user-input" type="text" id="personal-loans-calculator-borrow-amount" placeholder="Enter amount" value="15000" min="1" step="1000" required />
                             </div>
          
                         </div>
                         <div class="slider-container">
                             <div class="label-input">
-                                <div id="cash-rewards-min-savings-balance">$3</div>
-                                <input label="cash rewards min borrow slider" type="range" id="cash-rewards-borrow-slider" min="3" max="300000" value="15000" />
-                                <div id="cash-rewards-max-savings-balance">$300,000</div>
+                                <div id="personal-loan-min-savings-balance">$3</div>
+                                <input label="personal loan min borrow slider" type="range" id="personal-loan-borrow-slider" min="3" max="300000" value="15000" />
+                                <div id="personal-loan-max-savings-balance">$300,000</div>
                             </div>
                         </div>
                         <div class="input-container">
@@ -556,9 +556,9 @@
                             <div class="select-container">
                                 <div class="dropdown-icon"></div>
                                 <select
-                                    id="cash-rewards-payoff-loan-term"
-                                    name="cash-rewards-payoff-loan-term"
-                                    class="cash-rewards-payoff-loan-term"
+                                    id="personal-loan-payoff-loan-term"
+                                    name="personal-loan-payoff-loan-term"
+                                    class="personal-loan-payoff-loan-term"
                                 >
                                     <option value="12" data-apr="12">12 months</option>
                                     <option value="24" data-apr="24">24 months</option>
@@ -572,26 +572,26 @@
                         </div>
                         <div class="slider-container">
                             <div class="label-input apr-label">
-                                <div id="cash-rewards-min-savings-balance">1 month</div>
-                                <input label="cash rewards payoff slider" type="range" id="cash-rewards-payoff-slider" min="4.91"
+                                <div id="personal-loan-min-savings-balance">12 months</div>
+                                <input label="personal loan payoff slider" type="range" id="personal-loan-payoff-slider" min="12"
                                     max="84" value="60" step="12" />
-                                <div id="cash-rewards-max-savings-balance">84 months</div>
+                                <div id="personal-loan-max-savings-balance">84 months</div>
                             </div>
                         </div>
                         <div class="answer-text-mobile">
                             <div class="answer-container">
                                 <p class="answer-start-monthly-payment">Monthly Payment</p>
-                                <p class="cash-rewards-calculator-monthly-payment">$53,380.13</p>
+                                <p class="personal-loan-calculator-monthly-payment">$53,380.13</p>
                             </div>
                             <div class="answer-container">
                                 <p class="answer-start-apr">APR</p>
-                                <p class="cash-rewards-calculator-apr">9.74%</p>
+                                <p class="personal-loan-calculator-apr">9.74%</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr class="horizontal-line-desktop" />
-                <div class="cash-rewards-reset-container">
+                <div class="personal-loan-reset-container">
                     <div class="button-container">
                         <button class="reset-button">
                             <span class="reset-icon"><svg width="15" height="15" viewBox="0 0 20 19" fill="none"
@@ -609,11 +609,11 @@
             <div class="answer-container">
                 <div class="answer-text-desktop">
                     <p class="answer-start">You could save an average of</p>
-                    <p class="cash-rewards-calculator-monthly-payment">$53,380.13</p>
+                    <p class="personal-loan-calculator-monthly-payment">$53,380.13</p>
                 </div>
                 <div class="answer-text-desktop">
                     <p class="answer-start">APR</p>
-                    <p class="cash-rewards-calculator-apr">9.74%</p>
+                    <p class="personal-loan-calculator-apr">9.74%</p>
                 </div>
                 <div class="disclosures-container">
                     <p class="disclosures">For informational purposes only. Rate assumes excellent creditworthiness; your rate may differ from the rate(s) down below. Actual terms will vary. See below for important details.</p>
@@ -625,27 +625,27 @@
         </div>
     </section>
     <script>
-        const cashRewardsCalculatorBorrowBalance = document.getElementById('cash-rewards-calculator-borrow-amount');
-        const cashRewardsCalculatorPayoffLoanTerm = document.querySelector('#cash-rewards-payoff-loan-term');
-        const cashRewardsCalculatorAnswer = document.querySelectorAll('.cash-rewards-calculator-monthly-payment');
-        const cashRewardsCalculatorResetButton = document.querySelector('.cash-rewards-reset-container');
-        const cashRewardsCalculatorCurrentBorrowSlider = document.querySelector('#cash-rewards-borrow-slider');
-        const cashRewardsCalculatorPayoffSlider = document.querySelector('#cash-rewards-payoff-slider');
+        const personalLoanCalculatorBorrowBalance = document.getElementById('personal-loans-calculator-borrow-amount');
+        const personalLoanCalculatorPayoffLoanTerm = document.querySelector('#personal-loan-payoff-loan-term');
+        const personalLoanCalculatorAnswer = document.querySelectorAll('.personal-loan-calculator-monthly-payment');
+        const personalLoanCalculatorResetButton = document.querySelector('.personal-loan-reset-container');
+        const personalLoanCalculatorCurrentBorrowSlider = document.querySelector('#personal-loan-borrow-slider');
+        const personalLoanCalculatorPayoffSlider = document.querySelector('#personal-loan-payoff-slider');
 
         // Setting original values
-        const originalCashRewardsCalculatorBorrowValue = cashRewardsCalculatorBorrowBalance.value;
-        const originalCashRewardsCalculatorPayoffValue = cashRewardsCalculatorPayoffLoanTerm.value;
-        const originalCashRewardsCalculatorSliderBorrowValue = cashRewardsCalculatorCurrentBorrowSlider.value;
-        const originalCashRewardsCalculatorSliderPayoffValue = cashRewardsCalculatorPayoffSlider.value;
+        const originalPersonalLoanCalculatorBorrowValue = personalLoanCalculatorBorrowBalance.value;
+        const originalPersonalLoanCalculatorPayoffValue = personalLoanCalculatorPayoffLoanTerm.value;
+        const originalPersonalLoanCalculatorSliderBorrowValue = personalLoanCalculatorCurrentBorrowSlider.value;
+        const originalPersonalLoanCalculatorSliderPayoffValue = personalLoanCalculatorPayoffSlider.value;
 
         // Max values for inputs and sliders
-        const maxCashRewardsCalculatorBorrowValue = 300000;
-        const maxCashRewardsCalculatorPayoffValue = 30;
+        const maxPersonalLoanCalculatorBorrowValue = 300000;
+        const maxPersonalLoanCalculatorPayoffValue = 30;
 
         // Rate Value
-        const cashRewardsCalculatorRate = 4.90;
-        let cashRewardsCalculatorBorrowAmount = originalCashRewardsCalculatorBorrowValue;
-        let cashRewardsCalculatorPayoffLoanTermAmount = originalCashRewardsCalculatorPayoffValue;
+        // const cashRewardsCalculatorRate = 4.90;
+        let personalLoansCalculatorBorrowAmount = originalPersonalLoanCalculatorBorrowValue;
+        let personalLoanCalculatorPayoffLoanTermAmount = originalPersonalLoanCalculatorPayoffValue;
 
         const enforceSavingsCalculatorNumericInput = (input, maxValue) => {
             input.addEventListener('input', function () {
@@ -667,20 +667,11 @@
             });
         };
 
-        enforceSavingsCalculatorNumericInput(cashRewardsCalculatorBorrowBalance, maxCashRewardsCalculatorBorrowValue);
-        // enforceSavingsCalculatorNumericInput(cashRewardsCalculatorPayoffLoanTerm, maxCashRewardsCalculatorPayoffValue);
+        enforceSavingsCalculatorNumericInput(personalLoanCalculatorBorrowBalance, maxPersonalLoanCalculatorBorrowValue);
+        // enforceSavingsCalculatorNumericInput(personalLoanCalculatorPayoffLoanTerm, maxPersonalLoanCalculatorPayoffValue);
 
+        const addCommasToInputCalculator = (value) => parseFloat(value || 0, 10).toLocaleString(); 
         const removeCommaFromInputCalculator = (value) => parseInt(value.replace(/,/g, ""), 10) || 0;
-
-        const savingsAverageCalculation = (cashValue, percentValue, currentCashRewardsCalculatorRate) => {
-            const numericCash = removeCommaFromInputCalculator(cashValue);
-            console.log(numericCash);
-            const cashRewardsCalculatorRateDecimal = currentCashRewardsCalculatorRate / 100;
-            console.log(cashRewardsCalculatorRateDecimal);
-            const percentDecimal = percentValue / 100;
-            const monthlyDifference = (percentDecimal - cashRewardsCalculatorRateDecimal) / 12;
-            return (numericCash * monthlyDifference).toFixed(2);
-        };
 
         const adjustSavingsCalculatorSliderBackground = (slider, isPercent) => {
             const sliderValue = isPercent
@@ -689,19 +680,46 @@
             slider.style.background = `linear-gradient(to right, #177D78 0%, #177D78 ${sliderValue}%, #AEB0B5 ${sliderValue}%, #AEB0B5 100%)`;
         };
 
-        const updateSavingsCalculatorAnswer = () => {
-            cashRewardsCalculatorAnswer.forEach(ans => {
-                ans.textContent = `$${parseFloat(savingsAverageCalculation(cashRewardsCalculatorBorrowAmount, cashRewardsCalculatorPayoffLoanTerm, cashRewardsCalculatorRate), 10).toLocaleString()}`;
-            });
-        };
-
-        cashRewardsCalculatorBorrowBalance.addEventListener('input', () => {
-            // adjusting both the input and slider values
-            cashRewardsCalculatorBorrowAmount = cashRewardsCalculatorBorrowBalance.value;
-            
-            updateSavingsCalculatorAnswer();
-        
+        personalLoanCalculatorBorrowBalance.addEventListener('input', () => {
+            personalLoansCalculatorBorrowAmount = personalLoanCalculatorBorrowBalance.value;
+            personalLoanCalculatorCurrentBorrowSlider.value = removeCommaFromInputCalculator(personalLoansCalculatorBorrowAmount);
+            adjustSavingsCalculatorSliderBackground(personalLoanCalculatorCurrentBorrowSlider);
         });
+
+        personalLoanCalculatorCurrentBorrowSlider.addEventListener('input', () => {
+            personalLoansCalculatorBorrowAmount = personalLoanCalculatorCurrentBorrowSlider.value;
+            personalLoanCalculatorBorrowBalance.value = addCommasToInputCalculator(personalLoansCalculatorBorrowAmount);
+            adjustSavingsCalculatorSliderBackground(personalLoanCalculatorCurrentBorrowSlider);
+        });
+
+        personalLoanCalculatorPayoffLoanTerm.addEventListener('input', () => {
+            personalLoanCalculatorPayoffLoanTermAmount = personalLoanCalculatorPayoffLoanTerm.value;
+            personalLoanCalculatorPayoffSlider.value = removeCommaFromInputCalculator(personalLoanCalculatorPayoffLoanTermAmount);
+            adjustSavingsCalculatorSliderBackground(personalLoanCalculatorPayoffSlider, true);
+        });
+
+        personalLoanCalculatorPayoffSlider.addEventListener('input', () => {
+            personalLoanCalculatorPayoffLoanTermAmount = personalLoanCalculatorPayoffSlider.value;
+            personalLoanCalculatorPayoffLoanTerm.value = addCommasToInputCalculator(personalLoanCalculatorPayoffLoanTermAmount); 
+            adjustSavingsCalculatorSliderBackground(personalLoanCalculatorPayoffSlider, true);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            personalLoanCalculatorPayoffSlider.value = 12;
+            personalLoanCalculatorBorrowBalance.value = parseInt(personalLoanCalculatorBorrowBalance.value || 0, 10).toLocaleString();
+            personalLoanCalculatorPayoffLoanTerm.value = parseInt(personalLoanCalculatorPayoffLoanTerm.value || 0, 10).toLocaleString();
+            adjustSavingsCalculatorSliderBackground(personalLoanCalculatorCurrentBorrowSlider);
+            adjustSavingsCalculatorSliderBackground(personalLoanCalculatorPayoffSlider, true);
+            personalLoanCalculatorCurrentBorrowSlider.step = 500;
+            personalLoanCalculatorPayoffSlider.step = 12;
+        });
+
+    //    const updatePersonalLoanCalculatorAnswer = () => {
+    //     let 
+    //     let M = (P * r) / (1 - Math.pow(1 + r, -n));
+    //    }
+
+
     </script>
 </body>
 </html>
