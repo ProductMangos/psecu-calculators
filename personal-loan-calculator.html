@@ -278,25 +278,16 @@
             }
 
             .answer-text-desktop {
-                display: flex;
-                justify-content: space-between;
                 width: 100%;
                 font-size: 16px;
                 font-weight: 500;
                 display: none;
+                max-width: 548px;
 
                 @media screen and (min-width: 768px) {
-                    display: flex;
+                    display: block;
                     margin: 1rem auto;
                 }
-            }
-
-            .answer-text-container {
-                max-width: 290px;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: space-between;
             }
 
             .answer-text-mobile {
@@ -317,10 +308,9 @@
             .answer-start {
                 color: #000000;
                 opacity: .6;
-                font-size: 14px;
 
                 @media screen and (min-width: 768px) {
-                    margin-bottom: 1rem;
+                    margin-bottom: 3rem;
                 }
             }
 
@@ -328,14 +318,16 @@
             .cash-rewards-calculator-monthly-payment, .cash-rewards-calculator-apr {
                 color: #043436;
                 font-weight: 700;
-                font-size: clamp(1.75rem, 0.3061rem + 7.1749vw, 3.75rem);
+                font-size: clamp(1.75rem, -0.1452rem + 8.417vw, 4.375rem);
+
                 line-height: 0px;
+                margin-bottom: 3rem;
+
+                margin-top: 20%;
                 margin-bottom: 15%;
                 @media screen and (min-width: 768px) {
+                    font-size: 70px;
                     margin-bottom: 5rem;
-                    margin-top: 5%;
-                    font-size: clamp(1.75rem, 0.3061rem + 7.1749vw, 3.75rem);
-
 
                 }
             }
@@ -534,24 +526,56 @@
     <section id="cash-rewards-calculator-section">
         <div class="main-container">
             <div class="layout">
-                <h2 class="title">Calculate Your Cash Rewards</h2>
+                <h2 class="title">Calculate Your Personal Loan Payment</h2>
                 <p class="subtitle">You could save when you transfer your balance to our Classic Card and enjoy our promotional rate. Since we have no PSECU balance transfer fee or annual fee, the savings stay with you!</p>
                 <div class="calculator-container">
                     <div class="calculator-form">
                         <div class="input-container">
-                            <div class="input-title">What is the purchase amount?</div>
+                            <div class="input-title">How much do you want to borrow?</div>
                             <div class="input">
                                 <div class="dollar-sign">$</div>
                                 <div class="vertical-line"></div>
                                 <!-- <label for="cash-rewards-calculator-borrow-amount" class="sr-only">Cash Rewards Calculator Input</label> -->
-                                <input class="user-input" type="text" id="cash-rewards-calculator-borrow-amount" placeholder="Enter amount" value="20000" min="1" step="1000" required />
+                                <input class="user-input" type="text" id="cash-rewards-calculator-borrow-amount" placeholder="Enter amount" value="15000" min="1" step="1000" required />
                             </div>
+         
                         </div>
                         <div class="slider-container">
                             <div class="label-input">
-                                <div id="cash-rewards-min-savings-balance">$500</div>
-                                <input label="cash rewards min borrow slider" type="range" id="cash-rewards-borrow-slider" min="500" max="30000" value="20000" />
-                                <div id="cash-rewards-max-savings-balance">$30,000</div>
+                                <div id="cash-rewards-min-savings-balance">$3</div>
+                                <input label="cash rewards min borrow slider" type="range" id="cash-rewards-borrow-slider" min="3" max="300000" value="15000" />
+                                <div id="cash-rewards-max-savings-balance">$300,000</div>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="input-title-container">
+                                <!-- input field from module below -->
+                                <div class="input-title">How long to pay it off?</div>
+                                <!-- input field from module above-->
+                            </div>
+                            <div class="select-container">
+                                <div class="dropdown-icon"></div>
+                                <select
+                                    id="cash-rewards-payoff-loan-term"
+                                    name="cash-rewards-payoff-loan-term"
+                                    class="cash-rewards-payoff-loan-term"
+                                >
+                                    <option value="12" data-apr="12">12 months</option>
+                                    <option value="24" data-apr="24">24 months</option>
+                                    <option value="36" data-apr="36">36 months</option>
+                                    <option value="48" data-apr="48">48 months</option>
+                                    <option value="60" data-apr="60">60 months</option>
+                                    <option value="72" data-apr="72">72 months</option>
+                                    <option value="84" data-apr="84">84 months</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="label-input apr-label">
+                                <div id="cash-rewards-min-savings-balance">1 month</div>
+                                <input label="cash rewards payoff slider" type="range" id="cash-rewards-payoff-slider" min="4.91"
+                                    max="84" value="60" step="12" />
+                                <div id="cash-rewards-max-savings-balance">84 months</div>
                             </div>
                         </div>
                         <div class="answer-text-mobile">
@@ -559,8 +583,11 @@
                                 <p class="answer-start-monthly-payment">Monthly Payment</p>
                                 <p class="cash-rewards-calculator-monthly-payment">$53,380.13</p>
                             </div>
+                            <div class="answer-container">
+                                <p class="answer-start-apr">APR</p>
+                                <p class="cash-rewards-calculator-apr">9.74%</p>
+                            </div>
                         </div>
-                        
                     </div>
                 </div>
                 <hr class="horizontal-line-desktop" />
@@ -581,16 +608,12 @@
             </div>
             <div class="answer-container">
                 <div class="answer-text-desktop">
-                    <div class="answer-text-container">
-                        <p class="answer-header">1.5% Reward</p>
-                        <p class="answer-start">You can earn 1.5% cash rewards on purchases with a Founder’s Card alone.</p>
-                        <p class="cash-rewards-calculator-monthly-payment">$131.94</p>
-                    </div>
-                    <div class="answer-text-container">
-                        <p class="answer-header">2% Reward</p>
-                        <p class="answer-start">You can earn 2% cash rewards on purchases with a Founder’s Card and a qualifying PSECU checking account and direct deposit.</p>
-                        <p class="cash-rewards-calculator-monthly-payment">$175.92</p>
-                    </div>
+                    <p class="answer-start">You could save an average of</p>
+                    <p class="cash-rewards-calculator-monthly-payment">$53,380.13</p>
+                </div>
+                <div class="answer-text-desktop">
+                    <p class="answer-start">APR</p>
+                    <p class="cash-rewards-calculator-apr">9.74%</p>
                 </div>
                 <div class="disclosures-container">
                     <p class="disclosures">For informational purposes only. Rate assumes excellent creditworthiness; your rate may differ from the rate(s) down below. Actual terms will vary. See below for important details.</p>
