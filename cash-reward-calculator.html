@@ -622,105 +622,110 @@
     </section>
     <script>
         const cashRewardsCalculatorPurchaseInput = document.getElementById('cash-rewards-calculator-purchase-amount');
-        const cashRewardsCalculatorResetButton = document.querySelector('.button-container ');
-        const cashRewardsCalculatorPurchaseInputSlider = document.querySelector('#cash-rewards-purchase-amount-slider');
-        const cashRewardsCalculatorAnswer1dot5Percent = document.querySelectorAll('.cash-rewards-calculator-1-5-reward-percent');
-        const cashRewardsCalculatorAnswer2Percent = document.querySelectorAll('.cash-rewards-calculator-2-reward-percent');
+const cashRewardsCalculatorResetButton = document.querySelector('.button-container ');
+const cashRewardsCalculatorPurchaseInputSlider = document.querySelector('#cash-rewards-purchase-amount-slider');
+const cashRewardsCalculatorAnswer1dot5Percent = document.querySelectorAll('.cash-rewards-calculator-1-5-reward-percent');
+const cashRewardsCalculatorAnswer2Percent = document.querySelectorAll('.cash-rewards-calculator-2-reward-percent');
 
-        // Setting original values
-        const originalCashRewardsCalculatorPurchaseInput = cashRewardsCalculatorPurchaseInput.value;
-        const originalCashRewardsCalculatorSliderPurchaseInput = cashRewardsCalculatorPurchaseInputSlider.value;
+// Setting original values
+const originalCashRewardsCalculatorPurchaseInput = cashRewardsCalculatorPurchaseInput.value;
+const originalCashRewardsCalculatorSliderPurchaseInput = cashRewardsCalculatorPurchaseInputSlider.value;
 
-        // Setting Values
-        let cashRewardsCalculatorPurchaseAmount = originalCashRewardsCalculatorPurchaseInput;
+// Setting Values
+let cashRewardsCalculatorPurchaseAmount = originalCashRewardsCalculatorPurchaseInput;
 
-        // Setting max values
-        let maxCashRewardsCalculatorPurchaseAmount = 30000;
-        let maxCashRewardsCalculatorSliderPurchaseAmount = 30000;
-        let rewards1dot5 = 1.5;
-        let rewards2 = 2;
+// Setting max values
+let maxCashRewardsCalculatorPurchaseAmount = 30000;
+let maxCashRewardsCalculatorSliderPurchaseAmount = 30000;
+let rewards1dot5 = 1.5;
+let rewards2 = 2;
 
-        const enforceSavingsCalculatorNumericInput = (input, maxValue) => {
-            input.addEventListener('input', function () {
-                const cursorPosition = input.selectionStart;
-                 // Remove commas
-                let numericValue = input.value.replace(/,/g, '');
-                // Remove non-digit characters
-                numericValue = numericValue.replace(/\D/g, ''); 
+const enforceSavingsCalculatorNumericInput = (input, maxValue) => {
+    input.addEventListener('input', function () {
+        const cursorPosition = input.selectionStart;
+         // Remove commas
+        let numericValue = input.value.replace(/,/g, '');
+        // Remove non-digit characters
+        numericValue = numericValue.replace(/\D/g, ''); 
 
-                // Enforce maximum value
-                if (numericValue && parseInt(numericValue, 10) > maxValue) {
-                    numericValue = maxValue.toString();
-                }
-
-                // Format value with commas
-                input.value = numericValue ? parseInt(numericValue, 10).toLocaleString() : '';
-                // Preserve cursor position
-                input.setSelectionRange(cursorPosition, cursorPosition); 
-            });
-        };
-
-        enforceSavingsCalculatorNumericInput(cashRewardsCalculatorPurchaseInput, maxCashRewardsCalculatorPurchaseAmount);
-
-        const addCommasToInputCalculator = (value) => parseFloat(value || 0, 10).toLocaleString(); 
-        const removeCommaFromInputCalculator = (value) => parseInt(value.replace(/,/g, ""), 10) || 0;
-
-
-        const adjustSavingsCalculatorSliderBackground = (slider, isPercent) => {
-            const sliderValue = isPercent
-                ? ((slider.value - slider.min) / (slider.max - slider.min)) * 100
-                : (slider.value / slider.max) * 100;
-            slider.style.background = `linear-gradient(to right, #177D78 0%, #177D78 ${sliderValue}%, #AEB0B5 ${sliderValue}%, #AEB0B5 100%)`;
-        };
-
-        const cashRewardsCalculation = (rewardsPercent, purchaseAmount) => {
-            return addCommasToInputCalculator(((rewardsPercent / 100) * removeCommaFromInputCalculator(purchaseAmount)).toFixed(2));
+        // Enforce maximum value
+        if (numericValue && parseInt(numericValue, 10) > maxValue) {
+            numericValue = maxValue.toString();
         }
 
-        const updateSavingsCalculatorAnswer = () => {
-            cashRewardsCalculatorAnswer1dot5Percent.forEach(ans => {
-                ans.textContent = `$${cashRewardsCalculation(rewards1dot5, cashRewardsCalculatorPurchaseAmount)}`;
-            });
+        // Format value with commas
+        input.value = numericValue ? parseInt(numericValue, 10).toLocaleString() : '';
+        // Preserve cursor position
+        input.setSelectionRange(cursorPosition, cursorPosition); 
+    });
+};
 
-            cashRewardsCalculatorAnswer2Percent.forEach(ans => {
-                ans.textContent = `$${cashRewardsCalculation(rewards2, cashRewardsCalculatorPurchaseAmount)}`;
+enforceSavingsCalculatorNumericInput(cashRewardsCalculatorPurchaseInput, maxCashRewardsCalculatorPurchaseAmount);
 
-            })
-        };
+const addCommasToInputCalculator = (value) => {
+    return parseFloat(value || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+};
+const removeCommaFromInputCalculator = (value) => parseInt(value.replace(/,/g, ""), 10) || 0;
 
-        cashRewardsCalculatorPurchaseInput.addEventListener('input', () => {
-            // adjusting both the input and slider values
-            cashRewardsCalculatorPurchaseAmount = cashRewardsCalculatorPurchaseInput.value;
-            cashRewardsCalculatorPurchaseInputSlider.value = removeCommaFromInputCalculator(cashRewardsCalculatorPurchaseAmount);
-            adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
-            updateSavingsCalculatorAnswer();
-        });
 
-        cashRewardsCalculatorPurchaseInputSlider.addEventListener('input', () => {
-            // adjusting both the input and slider values
-            cashRewardsCalculatorPurchaseAmount = cashRewardsCalculatorPurchaseInputSlider.value;
-            cashRewardsCalculatorPurchaseInput.value = parseInt(cashRewardsCalculatorPurchaseAmount, 10).toLocaleString(); // Ensure commas are added
-            adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
-            updateSavingsCalculatorAnswer();
+const adjustSavingsCalculatorSliderBackground = (slider, isPercent) => {
+    const sliderValue = isPercent
+        ? ((slider.value - slider.min) / (slider.max - slider.min)) * 100
+        : (slider.value / slider.max) * 100;
+    slider.style.background = `linear-gradient(to right, #177D78 0%, #177D78 ${sliderValue}%, #AEB0B5 ${sliderValue}%, #AEB0B5 100%)`;
+};
 
-        });
+const cashRewardsCalculation = (rewardsPercent, purchaseAmount) => {
+    const rawCalculation = (rewardsPercent / 100) * removeCommaFromInputCalculator(purchaseAmount);
+    return addCommasToInputCalculator(rawCalculation.toFixed(2));
+};
 
-        cashRewardsCalculatorResetButton.addEventListener("click", () => {
-            cashRewardsCalculatorPurchaseInputSlider.value = originalCashRewardsCalculatorSliderPurchaseInput;
-            cashRewardsCalculatorPurchaseInput.value = addCommasToInputCalculator(originalCashRewardsCalculatorPurchaseInput);
-            cashRewardsCalculatorPurchaseAmount = originalCashRewardsCalculatorPurchaseInput;
-            adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
-            updateSavingsCalculatorAnswer();
-        })
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // adjusting both the input and slider values
-            cashRewardsCalculatorPurchaseAmount =  addCommasToInputCalculator(cashRewardsCalculatorPurchaseInputSlider.value);
-            cashRewardsCalculatorPurchaseInput.value =  cashRewardsCalculatorPurchaseAmount;
-            adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
-            cashRewardsCalculatorPurchaseInputSlider.step = 500;
-                
-        });
+const updateSavingsCalculatorAnswer = () => {
+    cashRewardsCalculatorAnswer1dot5Percent.forEach(ans => {
+        ans.textContent = `$${cashRewardsCalculation(rewards1dot5, cashRewardsCalculatorPurchaseAmount)}`;
+    });
+
+    cashRewardsCalculatorAnswer2Percent.forEach(ans => {
+        ans.textContent = `$${cashRewardsCalculation(rewards2, cashRewardsCalculatorPurchaseAmount)}`;
+
+    })
+};
+
+cashRewardsCalculatorPurchaseInput.addEventListener('input', () => {
+    // adjusting both the input and slider values
+    cashRewardsCalculatorPurchaseAmount = cashRewardsCalculatorPurchaseInput.value;
+    cashRewardsCalculatorPurchaseInputSlider.value = removeCommaFromInputCalculator(cashRewardsCalculatorPurchaseAmount);
+    adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
+    updateSavingsCalculatorAnswer();
+});
+
+cashRewardsCalculatorPurchaseInputSlider.addEventListener('input', () => {
+    // adjusting both the input and slider values
+    cashRewardsCalculatorPurchaseAmount = cashRewardsCalculatorPurchaseInputSlider.value;
+    cashRewardsCalculatorPurchaseInput.value = parseInt(cashRewardsCalculatorPurchaseAmount, 10).toLocaleString(); // Ensure commas are added
+    adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
+    updateSavingsCalculatorAnswer();
+
+});
+
+cashRewardsCalculatorResetButton.addEventListener("click", () => {
+    cashRewardsCalculatorPurchaseInputSlider.value = originalCashRewardsCalculatorSliderPurchaseInput;
+    cashRewardsCalculatorPurchaseInput.value = addCommasToInputCalculator(originalCashRewardsCalculatorPurchaseInput);
+    cashRewardsCalculatorPurchaseAmount = originalCashRewardsCalculatorPurchaseInput;
+    adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
+    updateSavingsCalculatorAnswer();
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    // adjusting both the input and slider values
+    cashRewardsCalculatorPurchaseAmount =  addCommasToInputCalculator(cashRewardsCalculatorPurchaseInputSlider.value);
+    cashRewardsCalculatorPurchaseInput.value =  cashRewardsCalculatorPurchaseAmount;
+    adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
+    cashRewardsCalculatorPurchaseInputSlider.step = 500;
+        
+});
+
 
     </script>
 </body>
