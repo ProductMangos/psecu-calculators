@@ -16,527 +16,533 @@
         body {
             font-family: "Lexend Deca", serif;
         }
-        #cash-rewards-calculator-section {
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-
-            @media screen and (min-width: 768px) {
-                padding: 1rem;
-            }
-
-            .main-container {
-                @media screen and (min-width: 768px) {
-                    display: flex;
-                    justify-content: space-around;
-                    align-items: flex-start;
-                    width: 100%;
-                    
-                }
-            }
-
-            .layout {
-                @media screen and (min-width: 768px) {
-                    max-width: 623px;
-                }
-            }
-
-            .title {
-                font-size: 30px;
-                font-weight: 700;
-                line-height: 37.5px;
-                max-width: 675px;
-                padding: 0 1rem;
-            }
-
-            .subtitle {
-                font-size: 16px;
-                font-weight: 400;
-                line-height: 24px;
-                margin: 1.5rem auto;
-                width: 100%;
-                max-width: 675px;
-                padding: 0 1rem;
-            }
-
-            .calculator-container {
-                /* Update with dynamic variable */
-                max-width: 1280px;
-                /* Update with dynamic variable */
-                border-radius: 10px;
-            }
-
-            .calculator-form {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                max-width: 675px;
-                /* Update with dynamic variable */
-                background: #e6e6e6;
-                /* Update with dynamic variable */
-                margin: 0 auto;
-                padding: 1rem;
-                border-radius: 20px;
-
-                @media screen and (min-width: 768px) {
-                    background-color: transparent;
-                }
-            }
-            
-            .input-container {
-                @media screen and (min-width: 768px) {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    width: 100%;
-                    margin: .8rem 0;
-                }
-            }
-
-            .input-title-container {
-                margin-top: 2rem;
-
-                @media screen and (min-width: 768px) {
-                    margin: 0;
-                    padding-top: 20px;
-                }
-            }
-
-            .input-title {
-                /* Update with dynamic variable */
-                color: var(--primary-dark-teal, #043436);
-                /* Update with dynamic variable */
-
-                font-family: Lexend Deca;
-                font-size: 16px;
-
-                /* Update with dynamic variable */
-                font-weight: 500;
-                /* Update with dynamic variable */
-
-                line-height: 22.4px;
-                width: 100%;
-                margin-bottom: .6rem;
-            }
-
-            .input-subtitle {
-                font-size: 12px;
-                padding-bottom: 1rem;
-                opacity: .6;
-            }
-
-            .input {
-                display: flex;
-                align-items: center;
-                border-radius: 50px;
-
-
-                /* Update with dynamic variable = $borderDefault*/
-                border: 1px solid #757575;
-                /* Update with dynamic variable */
-
-                /* Update with dynamic variable = --primary-white*/
-                background: var(--primary-white, #FFF);
-                /* Update with dynamic variable */
-
-                height: 55px;
-                width: 100%;
-                color: #777777;
-
-                @media screen and (min-width: 768px) {
-                    max-width: 175px;
-                }
-
-
-                .dollar-sign {
-                    font-size: 14px;
-                    max-width: 50px;
-                    width: 100%;
-                    text-align: center;
-                    padding-left: 10px;
-
-                    @media screen and (min-width: 768px) {
-                        max-width: 30px;
-                    }
-                }
-
-                .vertical-line {
-                    border-left: 1px solid gray;
-                    height: 100%;
-                }
-
-
-
-                .user-input {
-                    border: none;
-                    outline: none;
-                    background-color: transparent;
-                    font-family: inherit;
-                    font-size: inherit;
-                    padding: 5px 1rem;
-                    width: 100%;
-                }
-
-                &:focus-within {
-                    border-color: #177d78; 
-                    box-shadow: 0 0 5px rgba(23, 125, 120, 0.5); 
-                }
-            }
-
-            .slider-container {
-                width: 100%;
-                padding: .5rem 0;
-                display: none;
-
-                @media screen and (min-width: 768px) {
-                    display: block;
-                }
-            }
-
-
-            .label-input {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                font-size: 12px;
-            }
-
-
-            #cash-rewards-min-savings-balance,
-            #cash-rewards-max-savings-balance {
-                position: relative;
-                font-weight: 400;
-                z-index: 1;
-                padding: 0 .5rem;
-                font-size: 16px;
-                opacity: .7;
-            }
-            input[type="range"] {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 100%;
-                height: 9px;
-                border-radius: 5px;
-                outline: none;
-                background: linear-gradient(to right, #177D78 0%, #177D78 50%, #AEB0B5 50%, #AEB0B5 100%);
-                transition: opacity 0.2s;
-            }
-
-            input[type="range"]::-webkit-slider-thumb {
-                width: 100%;
-                -webkit-appearance: none;
-                appearance: none;
-                width: 50px;
-                height: 50px;
-                background-color: #177D78;
-                border-radius: 50%;
-                cursor: pointer;
-                position: relative;
-                z-index: 2;
-            }
-
-            input[type="range"]::-moz-range-thumb {
-                width: 50px;
-                height: 50px;
-                background-color: #177D78;
-                border: 2px solid #b4fff0;
-                border-radius: 50%;
-                cursor: pointer;
-            }
-
-            input[type="range"]:hover::-webkit-slider-thumb {
-                border: 2px solid #b4fff0;
-                opacity: 1;
-            }
-
-            input[type="range"]:hover::-moz-range-thumb {
-                border: 2px solid #b4fff0;
-                opacity: 1;
-            }
-
-            input[type="range"]:focus::-webkit-slider-thumb {
-                border: 2px solid #b4fff0;
-                opacity: 1;
-            }
-
-            input[type="range"]:focus::-moz-range-thumb {
-                border: 2px solid #b4fff0;
-                opacity: 1;
-            }
-
-
-            .answer-container {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                width: 100%;
-                @media screen and (min-width: 768px) {
-                    margin-top: 2.5rem;
-                    max-width: 624px;
-                }
-            }
-
-            .answer-text-desktop {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                font-size: 16px;
-                font-weight: 500;
-                display: none;
-
-                @media screen and (min-width: 768px) {
-                    display: flex;
-                    margin: 1rem auto;
-                }
-            }
-
-            .answer-header {
-                padding-bottom: .5rem;
-            }
-
-            .answer-text-container {
-                max-width: 290px;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: space-between;
-            }
-
-            .answer-text-mobile {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-                font-size: clamp(0.75rem, 0.5695rem + 0.8969vw, 1rem);
-                line-height: 16px;
-                font-weight: 500;
-                padding: 2rem 2rem .5rem 2rem;
-                
-                @media screen and (min-width: 768px) {
-                    display: none;
-                }
-            }
-
-            .answer-start {
-                color: #000000;
-                opacity: .6;
-                font-size: 14px;
-
-                @media screen and (min-width: 768px) {
-                    margin-bottom: 1rem;
-                    padding-right: 1rem;
-                }
-            }
-
-
-            .cash-rewards-calculator-monthly-payment, .cash-rewards-calculator-apr {
-                color: #043436;
-                font-weight: 700;
-                font-size: clamp(2rem, 0.2061rem + 5.1749vw, 3.75rem);
-                line-height: 0px;
-                margin-bottom: 15%;
-                @media screen and (min-width: 768px) {
-                    margin-bottom: 5rem;
-                    margin-top: 5%;
-                    padding-right: 1rem;
-
-
-
-                }
-            }
-
-            .cash-rewards-calculator-monthly-payment {
-                margin: 1.7rem 0;
-            }
-
-            .cash-rewards-calculator-apr {
-                margin-top: 1.6rem;
-                margin-bottom: 1.8rem;
-            }
-
-            .answer-month {
-                color: #043436;
-                font-weight: 700;
-                font-size: 16px;
-
-                @media screen and (min-width: 768px) {
-                    font-size: 32px;
-                }
-
-            }
-
-
-            .cash-rewards-reset-container {
-                display: flex;
-                align-items: center;
-                margin: 1rem;
-
-                @media screen and (min-width: 768px) {
-                    justify-content: flex-end;
-                }
-
-                .button-container {
-                    cursor: pointer;
-
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
-                    
-                    @media screen and (min-width: 768px) {
-                        width: 100px;
-                    }
-                }
-
-
-
-                .reset-icon {
-                    margin-right: .3rem;
-                    margin-top: .3rem;
-                }
-
-                .reset-button {
-                    border: none;
-                    outline: none;
-                    background-color: transparent;
-                    font-size: 14px;
-                    color: #043436;
-                    font-weight: 500;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 0 .5rem;
-                }
-
-                .reset-button:hover {
-                    cursor: pointer;
-                    text-decoration: underline;
-                }
-
-                .reset-button:focus {
-                    text-decoration: underline;
-                }
-            }
-
-            .horizontal-line-desktop {
-                margin-top: 2rem;
-                opacity: .6;
-                display: none;
-
-                @media screen and (min-width: 768px) {
-                    display: block;
-                }
-            }
-
-            .disclosures-container {
-                padding: .5rem;
-                @media screen and (min-width: 768px) {
-                    background-color: gainsboro;
-                    padding: 1rem;
-                    margin-top: 1rem;
-                }
-
-                .disclosures {
-                    padding: 0 .5rem;
-                    font-size: 12px;
-                    line-height: 16px;
-                    opacity: .6;
-                    width: 100%;
-
-                    @media screen and (min-width: 768px) {
-                        /* max-width: 498px; */
-                        line-height: 22.4px;
-
-                    }
-                }
-            }
-
-            .cta-container {
-                text-align: center;
-                margin: 2rem auto;
-                width: 100%;
-
-                @media screen and (min-width: 768px) {
-                    margin: 0;
-                    height: 15px;
-                }
-
-                .cta {
-                    border: none;
-                    background-color: #b4fff0;
-                    border-radius: 50px;
-                    width: 150px;
-                    height: 45px;
-                    color: #043436;
-                    font-size: 14px;
-                    line-height: 24px;
-                    font-weight: 500;
-
-                    @media screen and (min-width: 768px) {
-                        position: relative;
-                        top: .6rem;
-
-                    }
-                }
-            }
-
-            .select-container {
-                position: relative;
-
-                .dropdown-icon {
-                    position: absolute;
-                    top: 45%;
-                    right: 1.5rem;
-                    transform: rotate(180deg);
-                    width: 0;
-                    height: 0;
-                    border-left: 10px solid transparent;
-                    border-right: 10px solid transparent;
-                    border-bottom: 10px solid #177d78;
-
-                    @media screen and (min-width: 768px) {
-                        top: 42%;
-                    }
-                }
-
-                .dropdown-icon:active {
-                    transform: rotate(180deg);
-                }
-                .cash-rewards-payoff-loan-term  {
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    border-radius: 50px;
-                    padding: 0 2rem;
-
-
-                    /* Update with dynamic variable = $borderDefault*/
-                    border: 1px solid #757575;
-                    /* Update with dynamic variable */
-
-                    /* Update with dynamic variable = --primary-white*/
-                    background: var(--primary-white, #FFF);
-                    /* Update with dynamic variable */
-
-                    height: 55px;
-                    
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-
-
-                    @media screen and (min-width: 768px) {
-                        width: 100vw;
-                        max-width: 175px;
-                        padding: 0 1.5rem;
-
-                    }
-                                        
-                }
-
-            }
-
-        }
+       
+#cash-rewards-calculator-section {
+  margin: 0 auto 2rem 0;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 770px) {
+      padding: 1rem;
+  }
+
+  .main-container {
+      @media screen and (min-width: 770px) {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          width: 100%;
+          
+      }
+  }
+
+  .layout {
+      @media screen and (min-width: 770px) {
+          max-width: 623px;
+          min-width: 320px;
+      }
+  }
+
+  .title {
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 37.5px;
+      max-width: 675px;
+      padding: 0 1rem;
+  }
+
+  .subtitle {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      margin: 1.5rem auto;
+      width: 100%;
+      max-width: 675px;
+      padding: 0 1rem;
+  }
+
+  .calculator-container {
+      /* Update with dynamic variable */
+      max-width: 1280px;
+      /* Update with dynamic variable */
+      border-radius: 10px;
+  }
+
+  .calculator-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 675px;
+      /* Update with dynamic variable */
+      background: #e6e6e6;
+      /* Update with dynamic variable */
+      margin: 0 auto;
+      padding: 1rem;
+      border-radius: 20px;
+
+      @media screen and (min-width: 770px) {
+          background-color: transparent;
+      }
+  }
+  
+  .input-container {
+      @media screen and (min-width: 770px) {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          margin: .8rem 0;
+      }
+  }
+
+  .input-title-container {
+      margin-top: 2rem;
+
+      @media screen and (min-width: 770px) {
+          margin: 0;
+          padding-top: 20px;
+      }
+  }
+
+  .input-title {
+      /* Update with dynamic variable */
+      color: var(--primary-dark-teal, #043436);
+      /* Update with dynamic variable */
+
+      font-family: Lexend Deca;
+      font-size: 16px;
+
+      /* Update with dynamic variable */
+      font-weight: 500;
+      /* Update with dynamic variable */
+
+      line-height: 22.4px;
+      width: 100%;
+      margin-bottom: .6rem;
+  }
+
+  .input-subtitle {
+      font-size: 12px;
+      padding-bottom: 1rem;
+      opacity: .6;
+  }
+
+  .input {
+      display: flex;
+      align-items: center;
+      border-radius: 50px;
+
+
+      /* Update with dynamic variable = $borderDefault*/
+      border: 1px solid #757575;
+      /* Update with dynamic variable */
+
+      /* Update with dynamic variable = --primary-white*/
+      background: var(--primary-white, #FFF);
+      /* Update with dynamic variable */
+
+      height: 55px;
+      width: 100%;
+      color: #777777;
+
+      @media screen and (min-width: 770px) {
+          max-width: 175px;
+      }
+
+
+      .dollar-sign {
+          font-size: 14px;
+          max-width: 50px;
+          width: 100%;
+          text-align: center;
+          padding-left: 10px;
+
+          @media screen and (min-width: 770px) {
+              max-width: 30px;
+          }
+      }
+
+      .vertical-line {
+          border-left: 1px solid gray;
+          height: 100%;
+      }
+
+
+
+      .user-input {
+          border: none;
+          outline: none;
+          background-color: transparent;
+          font-family: inherit;
+          font-size: inherit;
+          padding: 5px 1rem;
+          width: 100%;
+      }
+
+      &:focus-within {
+          border-color: #177d78; 
+          box-shadow: 0 0 5px rgba(23, 125, 120, 0.5); 
+      }
+  }
+
+  .slider-container {
+      width: 100%;
+      padding: .5rem 0;
+      display: none;
+
+      @media screen and (min-width: 770px) {
+          display: block;
+      }
+  }
+
+
+  .label-input {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+  }
+
+
+  #cash-rewards-min-savings-balance,
+  #cash-rewards-max-savings-balance {
+      position: relative;
+      font-weight: 400;
+      z-index: 1;
+      padding: 0 .5rem;
+      font-size: 16px;
+      opacity: .7;
+  }
+  input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 9px;
+      border-radius: 5px;
+      outline: none;
+      background: linear-gradient(to right, #177D78 0%, #177D78 50%, #AEB0B5 50%, #AEB0B5 100%);
+      transition: opacity 0.2s;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 50px;
+      height: 50px;
+      background-color: #177D78;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+      width: 50px;
+      height: 50px;
+      background-color: #177D78;
+      border: 2px solid #b4fff0;
+      border-radius: 50%;
+      cursor: pointer;
+  }
+
+  input[type="range"]:hover::-webkit-slider-thumb {
+      border: 2px solid #b4fff0;
+      opacity: 1;
+  }
+
+  input[type="range"]:hover::-moz-range-thumb {
+      border: 2px solid #b4fff0;
+      opacity: 1;
+  }
+
+  input[type="range"]:focus::-webkit-slider-thumb {
+      border: 2px solid #b4fff0;
+      opacity: 1;
+  }
+
+  input[type="range"]:focus::-moz-range-thumb {
+      border: 2px solid #b4fff0;
+      opacity: 1;
+  }
+
+
+  .answer-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      @media screen and (min-width: 770px) {
+          margin-top: 2.5rem;
+          padding: 0 2rem;
+          max-width: 600px;
+      }
+  }
+
+  .answer-text-desktop {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 500;
+      display: none;
+
+      @media screen and (min-width: 770px) {
+          display: flex;
+          margin: 1rem auto;
+      }
+  }
+
+  .answer-header {
+      padding-bottom: .5rem;
+  }
+
+  .answer-text-container {
+      max-width: 290px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+  }
+
+  .answer-text-mobile {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      font-size: clamp(0.75rem, 0.5695rem + 0.8969vw, 1rem);
+      line-height: 16px;
+      font-weight: 500;
+      padding: 2rem .5rem .5rem;
+      
+      @media screen and (min-width: 770px) {
+          display: none;
+      }
+  }
+
+  .answer-start {
+      color: #000000;
+      opacity: .6;
+      font-size: 14px;
+
+      @media screen and (min-width: 770px) {
+          margin-bottom: 1rem;
+          padding-right: 1rem;
+      }
+  }
+
+
+  .cash-rewards-calculator-monthly-payment, .cash-rewards-calculator-apr {
+      color: #043436;
+      font-weight: 700;
+      font-size: clamp(2.1rem,.1061rem + 3.1749vw,3.4rem);
+      line-height: 0px;
+      margin-bottom: 15%;
+      @media screen and (min-width: 770px) {
+          margin-bottom: 5rem;
+          margin-top: 5%;
+          padding-right: 1rem;
+          min-width: 170px;
+
+
+      }
+  }
+
+  .cash-rewards-calculator-monthly-payment {
+    margin: 1rem 0;
+      @media screen and (min-width: 770px) {
+        margin: 1.7rem 0;
+
+      }
+  }
+
+  .cash-rewards-calculator-apr {
+      margin-top: 1.6rem;
+      margin-bottom: 1.8rem;
+  }
+
+  .answer-month {
+      color: #043436;
+      font-weight: 700;
+      font-size: 16px;
+
+      @media screen and (min-width: 770px) {
+          font-size: 32px;
+      }
+
+  }
+
+
+  .cash-rewards-reset-container {
+      display: flex;
+      align-items: center;
+      margin: 1rem;
+
+      @media screen and (min-width: 770px) {
+          justify-content: flex-end;
+      }
+
+      .button-container {
+          cursor: pointer;
+
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          
+          @media screen and (min-width: 770px) {
+              width: 100px;
+          }
+      }
+
+
+
+      .reset-icon {
+          margin-right: .3rem;
+          margin-top: .3rem;
+      }
+
+      .reset-button {
+          border: none;
+          outline: none;
+          background-color: transparent;
+          font-size: 14px;
+          color: #043436;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .reset-button:hover {
+          cursor: pointer;
+          text-decoration: underline;
+      }
+
+      .reset-button:focus {
+          text-decoration: underline;
+      }
+  }
+
+  .horizontal-line-desktop {
+      margin-top: 2rem;
+      opacity: .6;
+      display: none;
+
+      @media screen and (min-width: 770px) {
+          display: block;
+      }
+  }
+
+  .disclosures-container {
+      padding: .5rem;
+      @media screen and (min-width: 770px) {
+          background-color: gainsboro;
+          padding: 1rem;
+          margin-top: 1rem;
+      }
+
+      .disclosures {
+          padding: 0 .5rem;
+          font-size: 12px;
+          line-height: 16px;
+          opacity: .6;
+          width: 100%;
+
+          @media screen and (min-width: 770px) {
+              /* max-width: 498px; */
+              line-height: 22.4px;
+
+          }
+      }
+  }
+
+  .cta-container {
+      text-align: center;
+      margin: 2rem auto;
+      width: 100%;
+
+      @media screen and (min-width: 770px) {
+          margin: 0;
+          height: 15px;
+      }
+
+      .cta {
+          border: none;
+          background-color: #b4fff0;
+          border-radius: 50px;
+          width: 150px;
+          height: 45px;
+          color: #043436;
+          font-size: 14px;
+          line-height: 24px;
+          font-weight: 500;
+
+          @media screen and (min-width: 770px) {
+              position: relative;
+              top: .6rem;
+
+          }
+      }
+  }
+
+  .select-container {
+      position: relative;
+
+      .dropdown-icon {
+          position: absolute;
+          top: 45%;
+          right: 1.5rem;
+          transform: rotate(180deg);
+          width: 0;
+          height: 0;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-bottom: 10px solid #177d78;
+
+          @media screen and (min-width: 770px) {
+              top: 42%;
+          }
+      }
+
+      .dropdown-icon:active {
+          transform: rotate(180deg);
+      }
+      .cash-rewards-payoff-loan-term  {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          border-radius: 50px;
+          padding: 0 2rem;
+
+
+          /* Update with dynamic variable = $borderDefault*/
+          border: 1px solid #757575;
+          /* Update with dynamic variable */
+
+          /* Update with dynamic variable = --primary-white*/
+          background: var(--primary-white, #FFF);
+          /* Update with dynamic variable */
+
+          height: 55px;
+          
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+
+
+          @media screen and (min-width: 770px) {
+              width: 100vw;
+              max-width: 175px;
+              padding: 0 1.5rem;
+
+          }
+                              
+      }
+
+  }
+
+}
     </style>
 </head>
 <body>
