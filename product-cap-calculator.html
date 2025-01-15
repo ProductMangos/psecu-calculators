@@ -263,6 +263,7 @@
 
       .product-cap-button-container {
         display: flex;
+        margin: 1rem 0;
 
         #product-cap-calculate-btn {
           padding: 10px 20px;
@@ -276,7 +277,11 @@
         max-width: 300px;
         padding: 0 10px;
         color: red;
-        visibility: hidden;
+        display: none;
+      }
+
+      .answer-disclosure {
+        margin: 1rem 0;
       }
 
     }
@@ -396,7 +401,7 @@
                 required 
               />
             </div>
-            <div style="height: 30px"></div>
+            <div id="additional-products-gap-visibility" style="height: 0px"></div>
           </div>
         </div>
         <div class="product-cap-button-container">
@@ -462,7 +467,8 @@
       maxBackendTotalAnswer: document.getElementById("max-backend-total-answer"),
       ltvWithoutBackendAnswer: document.getElementById("ltv-without-backend-answer"),
       ltvWithBackendAnswer: document.getElementById("ltv-with-backend-answer"),
-      maxLtvAnswer: document.getElementById("max-ltv-answer")
+      maxLtvAnswer: document.getElementById("max-ltv-answer"),
+      additionalProductsGapVisibility: document.getElementById("additional-products-gap-visibility")
     }
 
 
@@ -560,14 +566,16 @@
       let ltvWithoutBackend = calculateLTVWithoutBackend(requestedAmount, vehicleValue, backendTotal);
       
       elements.productCapAnswerContainer.style.display = "none";
-
+      elements.form.scrollIntoView();
       if (ltvWithoutBackend < vehicleValue * 0.7) {
         elements.gap.disabled = true;
-        elements.gapEligibility.style.visibility = "visible";
+        elements.gapEligibility.style.display = "block";
         elements.gap.value = 0;
+        elements.additionalProductsGapVisibility.style.height = "30px";
       } else {
         elements.gap.disabled = false;
-        elements.gapEligibility.style.visibility = "hidden";
+        elements.gapEligibility.style.display = "none";
+        elements.additionalProductsGapVisibility.style.height = "0px";
       }
     };
 
@@ -605,6 +613,8 @@
       displayResults(elements.maxLtvAnswer, maxLTV);
 
       elements.productCapAnswerContainer.style.display = "block";
+      elements.productCapAnswerContainer.scrollIntoView();
+      
     });
 
   </script>
