@@ -1,586 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Cap Calculator</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-        #product-cap-calculator-section {
-            width: 100%;
-            flex-shrink: 0;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Cap Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-            .calculator {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                /* max-width: 1280px;
+    #product-cap-calculator-section {
+      width: 100%;
+      flex-shrink: 0;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .calculator {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        /* max-width: 1280px;
                 width: 100%; */
-                /* margin: 0 auto; */
-                background: #f2f2f2;
-                /* padding: 1.5rem 2rem; */
-                border-radius: 10px;
-                padding: 1rem 2rem;
+        /* margin: 0 auto; */
+        background: #f2f2f2;
+        /* padding: 1.5rem 2rem; */
+        border-radius: 10px;
+        padding: 1rem 2rem;
 
-                @media screen and (max-width: 768px) {
-                    /* padding: 1rem; */
-                }
+        @media screen and (max-width: 768px) {
+          /* padding: 1rem; */
+        }
 
-            }
+      }
 
-            .calc-form {
-                max-width: 650px;
-                width: 100%;
-                /* padding-right: 2rem; */
-                /* padding-top: 1rem; */
+      .calc-form {
+        max-width: 650px;
+        width: 100%;
+        /* padding-right: 2rem; */
+        /* padding-top: 1rem; */
 
 
-                @media screen and (max-width: 768px) {
-                    /* padding-right: 1rem; */
-                }
-            }
+        @media screen and (max-width: 768px) {
+          /* padding-right: 1rem; */
+        }
+      }
 
-            .row {
+      .row {
 
-              @media screen and (min-width: 768px) {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-items: center;
-                }
-            }
+        @media screen and (min-width: 768px) {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
 
-            .input-first-row {
-              height: 100%;
-              width: 100%;
-              padding: 0 .5rem;
-            }
+      .input-first-row {
+        height: 100%;
+        width: 100%;
+        padding: 0 .5rem;
+      }
 
-            .input-second-row {
-              height: 100%;
-              width: 100%;
-              padding: 0 .5rem;
-            }
+      .input-second-row {
+        height: 100%;
+        width: 100%;
+        padding: 0 .5rem;
+      }
 
-            .title {
-                font-size: 35px;
-                height: auto;
-                color: #043436;
-                font-weight: 700;
-                line-height: 45px;
-                padding-bottom: 1rem;
-                margin: 0;
-            }
+      .title {
+        font-size: 35px;
+        height: auto;
+        color: #043436;
+        font-weight: 700;
+        line-height: 45px;
+        padding-bottom: 1rem;
+        margin: 0;
+      }
 
-            .sub-title {
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 26px;
+      .sub-title {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
 
-                @media screen and (min-width: 768px) {
-                  padding-bottom: 2.5rem;
+        @media screen and (min-width: 768px) {
+          padding-bottom: 2.5rem;
 
-                }
-            }
+        }
+      }
 
-            .input-title {
-                color: var(--primary-dark-teal, #043436);
-                font-family: Lexend Deca;
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 500;
+      .input-title {
+        color: var(--primary-dark-teal, #043436);
+        font-family: Lexend Deca;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
 
-            }
+      }
 
-            /* .dropdown-title {
+      /* .dropdown-title {
               height: 30px;
               @media screen and (min-width: 768px) {
                 margin-bottom: 1rem;
               }
             } */
 
-            .input {
-                display: flex;
-                align-items: center;
-                border-radius: 100px;
-                border: 0.35px solid #757575;
-                background: #ffffff;
-                height: 60px;
-                width: 100%;
-                margin-top: .3rem;
-                @media screen and (min-width: 768px) {
-                  margin: 1rem 0;
-                }
+      .input {
+        display: flex;
+        align-items: center;
+        border-radius: 100px;
+        border: 0.35px solid #757575;
+        background: #ffffff;
+        height: 60px;
+        width: 100%;
+        margin-top: .3rem;
 
-                .dollar-sign {
-                    font-size: 14px;
-                    max-width: 64px;
-                    width: 100%;
-                    text-align: center;
-                    padding-left: 10px;
-                }
+        @media screen and (min-width: 768px) {
+          margin: 1rem 0;
+        }
 
-                .vertical-line {
-                    border-left: 1px solid gray;
-                    height: 100%;
-                }
+        .dollar-sign {
+          font-size: 14px;
+          max-width: 64px;
+          width: 100%;
+          text-align: center;
+          padding-left: 10px;
+        }
 
-                .user-input {
-                    border: none;
-                    outline: none;
-                    background-color: transparent;
-                    font-family: inherit;
-                    font-size: inherit;
-                    padding: 5px 1rem;
-                    width: 100%;
-                }
+        .vertical-line {
+          border-left: 1px solid gray;
+          height: 100%;
+        }
 
-            }
-            .input:has(.user-input:valid) {
-              
-                outline: 1px solid #177d78; 
-            }
+        .product-cap-user-input {
+          border: none;
+          outline: none;
+          background-color: transparent;
+          font-family: inherit;
+          font-size: inherit;
+          padding: 5px 1rem;
+          width: 100%;
+        }
 
-            .input:has(.user-input:user-invalid) {
-                outline: 1px solid red; 
-          
-            }
+      }
 
-            .product-cap-tier-dropdown {
-                padding-top: 20px;
-                display: flex;
-                flex-direction: column;
+      .input:has(.product-cap-user-input:valid) {
 
-                @media screen and (min-width: 768px) {
-                  padding-top: 0;
-                  font-size: 14px;
-                  width: 100%;
-                  max-width: 600px;
-                }
-            }
+        outline: 1px solid #177d78;
+      }
 
-            .input-container {
-              width: 100%;
-              padding: .5rem; 
+      .input:has(.product-cap-user-input:user-invalid) {
+        outline: 1px solid red;
 
-              @media screen and (min-width: 768px) {
-                padding: 0 1rem; 
+      }
 
-              }
-            }
+      .product-cap-tier-dropdown {
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
 
-            #tier-dropdown {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
-                height: 60px;
-                background-color: #ffffff;
-                outline: none;
-                border: 0.35px solid #757575;
-                border-radius: 100px;
-                padding: 0 2rem;
-                color: #525355;
-                font-size: 14px;
+        @media screen and (min-width: 768px) {
+          padding-top: 0;
+          font-size: 14px;
+          width: 100%;
+          max-width: 600px;
+        }
+      }
 
-                margin-top: .3rem;
+      .input-container {
+        width: 100%;
+        padding: .5rem;
 
-                @media screen and (min-width: 768px) {
-                  margin: 1rem 0;
+        @media screen and (min-width: 768px) {
+          padding: 0 1rem;
 
-                }
-            }
+        }
+      }
 
-            .product-cap-answer-container {
+      #tier-dropdown {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        height: 60px;
+        background-color: #ffffff;
+        outline: none;
+        border: 0.35px solid #757575;
+        border-radius: 100px;
+        padding: 0 2rem;
+        color: #525355;
+        font-size: 14px;
+
+        margin-top: .3rem;
+
+        @media screen and (min-width: 768px) {
+          margin: 1rem 0;
+
+        }
+      }
+
+      .product-cap-answer-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        display: none;
+
+        @media screen and (min-width: 768px) {
+          padding-left: 2rem;
+          margin-top: 2.5rem;
+          width: auto;
+        }
+
+        .answer-row {
+          width: 100%;
           display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          width: 100%; 
-          display: none;
+          align-items: center;
+          justify-content: space-around;
+          margin: 0 auto;
+        }
+
+        .answer-header {
+          font-size: 14px;
+          padding-bottom: .5rem;
+          font-weight: 700;
+          color: #757575;
 
           @media screen and (min-width: 768px) {
-              padding-left: 2rem;
-              margin-top: 2.5rem;
-              width: auto;
+            font-size: 20px;
+
           }
+        }
 
-          .answer-row {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            margin: 0 auto;
+        .answers {
+          display: flex;
+          flex-direction: column;
+          /* align-items: flex-start; */
+          justify-content: center;
+          padding: 1rem 0;
+          width: 150px;
+
+          @media screen and (min-width: 768px) {
+            width: 300px;
           }
+        }
 
-          .answer-header {
-            font-size: 14px;
-            padding-bottom: .5rem;
-            font-weight: 700;
-            color: #757575;
-
-            @media screen and (min-width: 768px) {
-              font-size: 20px;
-
-            }
-          }
-
-          .answers {
-            display: flex;
-            flex-direction: column;
-            /* align-items: flex-start; */
-            justify-content: center;
-            padding: 1rem 0;
-            width: 150px;
-
-            @media screen and (min-width: 768px) {
-              width: 300px;
-            }
-          }
-
-          .answer-text {
-            color: #043436;
-            font-size: 35px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 45px;
-          }
+        .answer-text {
+          color: #043436;
+          font-size: 35px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 45px;
+        }
 
 
       }
 
+      .product-cap-button-container {
+        display: flex;
+
+        #product-cap-calculate-btn {
+          padding: 10px 20px;
+          margin: 0 auto;
+      }
+    }
+
+
       .gap-eligibility {
-            font-size: 12px; 
-            max-width: 300px; 
-            padding: 0 10px; 
-            color: red;
-            visibility: hidden;
-          }
+        font-size: 12px;
+        max-width: 300px;
+        padding: 0 10px;
+        color: red;
+        visibility: hidden;
+      }
 
-        }
-
-
-    </style>
+    }
+  </style>
 </head>
+
 <body>
-    <section id="product-cap-calculator-section">
-        <div class="calculator">
-          <form class="calc-form" id="product-cap-calculator">
-            <div class="title">Product Cap Calculator</div>
-            <p class="sub-title">Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque natoque eu in est curae vitae varius. Sollicitudin duis magna cursus, arcu felis aliquet morbi. Himenaeos nulla dignissim finibus aliquam class vulputate in potenti curabitur.</p>
+  <section id="product-cap-calculator-section">
+    <div class="calculator">
+      <form class="calc-form" id="product-cap-calculator">
+        <div class="title">Product Cap Calculator</div>
+        <p class="sub-title">Lorem ipsum odor amet, consectetuer adipiscing elit. Scelerisque natoque eu in est curae
+          vitae varius. Sollicitudin duis magna cursus, arcu felis aliquet morbi. Himenaeos nulla dignissim finibus
+          aliquam class vulputate in potenti curabitur.</p>
 
-            <div class="row">
-              <div class="input-container">
-              <div class="product-cap-tier-dropdown">
-                  <label for="tier-dropdown" class="input-title">Select a Tier</label>
-                  <select id="tier-dropdown" name="tier-dropdown">
-                      <option value=1 data-apr="" id="tier1" class="option">Tier 1</option>            
-                      <option value=2 data-apr="" id="tier2" class="option">Tier 2</option>
-                      <option value=3 data-apr="" id="tier3" class="option">Tier 3</option>
-                      <option value=4 data-apr="" id="tier4" class="option">Tier 4</option>
-                      <option value=5 data-apr="" id="tier5" class="option">Tier 5</option>
-                  </select>
-                </div> 
-              </div>
-              <div class="input-container">
-                <span class="input-title">Requested Amount</span>
-                <div class="input">
-                  <div class="dollar-sign">$</div>
-                  <div class="vertical-line"></div>
-                  <!-- <label class="sr-only">Car Loan Calculator</label> -->
-                  <input
-                    type="number"
-                    class="user-input"
-                    id="requested-amount"
-                    placeholder="Enter amount"
-                    min="1"
-                    step="0.01"
-                    max="10000000"
-                    required
-                  />
-                </div>
-              </div>  
-            </div>
-
-
-            <div class="row">
-              <div class="input-container">
-                <span class="input-title">Vehicle Value</span>
-                <div class="input">
-                  <div class="dollar-sign">$</div>
-                  <div class="vertical-line"></div>
-                  <!-- <label class="sr-only">Car Loan Calculator</label> -->
-                  <input
-                    type="number"
-                    class="user-input"
-                    id="vehicle-value"
-                    placeholder="Enter amount"
-                    min="1"
-                    step="0.01"
-                    max="10000000"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="input-container">
-                <span class="input-title">Warranty</span>
-                <div class="input">
-                  <div class="dollar-sign">$</div>
-                  <div class="vertical-line"></div>
-                  <!-- <label class="sr-only">Car Loan Calculator</label> -->
-                  <input
-                    type="number"
-                    class="user-input"
-                    type="text"
-                    id="warranty"
-                    placeholder="Enter amount"
-                    min="0"
-                    step="0.01"
-                    max="10000000"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-container">
-                <span class="input-title">Gap</span>
-                <div class="input">
-                  <div class="dollar-sign">$</div>
-                  <div class="vertical-line"></div>
-                  <!-- <label class="sr-only">Car Loan Calculator</label> -->
-                  <input
-                    type="number"
-                    class="user-input"
-                    type="text"
-                    id="gap"
-                    placeholder="Enter amount"
-                    min="0"
-                    step="0.01"
-                    max="10000000"
-                    required
-                  />
-                </div>
-                <div class="gap-eligibility" id="gap-eligibility">GAP is not eligible for financing if
-                  front-end LTV is below 70%</div>
-              </div>
-              <div class="input-container">
-                <span class="input-title">Additional Products</span>
-                <div class="input">
-                  <div class="dollar-sign">$</div>
-                  <div class="vertical-line"></div>
-                  <!-- <label class="sr-only">Car Loan Calculator</label> -->
-                  <input
-                    type="number"
-                    class="user-input"
-                    type="text"
-                    id="additional-products"
-                    placeholder="Enter amount"
-                    min="0"
-                    step="0.01"
-                    max="10000000"
-                    required
-                  />
-                </div>
-                <div style="height: 30px"></div>
-              </div>
-            </div>
-              <!-- <label for="product-cap-calculate-btn" class="sr-only" >Submit Button</label> -->
-              <input
-              type="submit"
-              class="product-cap-loan-btn"
-              id="product-cap-calculate-btn"
-              value="Submit Calculation"
-            />
-            <div class="product-cap-answer-container" id="product-cap-answer-container">
-              <div class="answer-row">
-                <div class="answers">
-                  <div class="answer-header">Max Warranty</div>
-                  <div id="max-warranty-answer" class="payment-amount answer-text">$0</div>
-                </div>
-                <div class="answers">
-                  <div class="answer-header">Backend Total</div>
-                  <div id="backend-total-answer" class="current-apr answer-text">$0</div>
-                </div>
-              </div>
-              <div class="answer-row">
-                <div class="answers">
-                  <div class="answer-header">Max Backend Total</div>
-                  <div id="max-backend-total-answer" class="payment-amount answer-text">$0</div>
-                </div>
-                <div class="answers">
-                  <div class="answer-header">LTV without backend</div>
-                  <div id="ltv-without-backend-answer" class="current-apr answer-text">$0</div>
-                </div>
-              </div>
-              <div class="answer-row">
-                <div class="answers">
-                  <div class="answer-header">LTV with backend</div>
-                  <div id="ltv-with-backend-answer" class="payment-amount answer-text">$0</div>
-                </div>
-                <div class="answers">
-                  <div class="answer-header">Max LTV</div>
-                  <div id="max-ltv-answer" class="current-apr answer-text">$0</div>
-                </div>
-              </div>
-              <div class="answer-disclosure">
-                disclosure here
-              </div>
+        <div class="row">
+          <div class="input-container">
+            <div class="product-cap-tier-dropdown">
+              <label for="tier-dropdown" class="input-title">Select a Tier</label>
+              <select id="tier-dropdown" name="tier-dropdown">
+                <option value=1 data-apr="" id="tier1" class="option">Tier 1</option>
+                <option value=2 data-apr="" id="tier2" class="option">Tier 2</option>
+                <option value=3 data-apr="" id="tier3" class="option">Tier 3</option>
+                <option value=4 data-apr="" id="tier4" class="option">Tier 4</option>
+                <option value=5 data-apr="" id="tier5" class="option">Tier 5</option>
+              </select>
             </div>
           </div>
-
-
-          </form>
+          <div class="input-container">
+            <span class="input-title">Requested Amount</span>
+            <div class="input">
+              <div class="dollar-sign">$</div>
+              <div class="vertical-line"></div>
+              <!-- <label class="sr-only">Car Loan Calculator</label> -->
+              <input 
+                type="type" 
+                class="product-cap-user-input" 
+                id="requested-amount" 
+                placeholder="Enter amount" 
+                oninput="this.value = this.value.replace(/,/g, '').replace(/^0+(?!$)/, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',').replace(/^0+(?!$)/, '').replace(/(\.\d{2})\d+/, '$1'); if (parseInt(this.value.replace(/,/g, '')) > 1000000) { this.value = '1,000,000'; }"
+                pattern="[0-9,.]*"  
+                required 
+              />
+            </div>
+          </div>
         </div>
-      </section>
-      <script>
-        const tierDropDown = document.getElementById("tier-dropdown");
-const requestedAmount = document.getElementById("requested-amount");
-const vehicleValue = document.getElementById("vehicle-value");
-const warranty = document.getElementById("warranty");
-const gap = document.getElementById("gap");
-const additionalProducts = document.getElementById("additional-products");
-const productCapCalculateBtn = document.getElementById("product-cap-calculate-btn");
-const productCapAnswerContainer = document.getElementById("product-cap-answer-container");
-const form = document.getElementById("product-cap-calculator");
-const gapEligibility = document.getElementById("gap-eligibility");
 
-const calculateMaxWarranty = () => {
-    if (vehicleValue.value >= 10000) {
-        let result = vehicleValue.value * 0.18;
-        if (result < 3800) {
-            return 3800;
-        } else if (result > 10000) {
-            return 10000;
-        } else {
-            return result;
-        }
-    } else {
-        return 3500;
+        <div class="row">
+          <div class="input-container">
+            <span class="input-title">Vehicle Value</span>
+            <div class="input">
+              <div class="dollar-sign">$</div>
+              <div class="vertical-line"></div>
+              <!-- <label class="sr-only">Car Loan Calculator</label> -->
+              <input 
+                type="type" 
+                class="product-cap-user-input" 
+                id="vehicle-value" 
+                placeholder="Enter amount" 
+                oninput="this.value = this.value.replace(/,/g, '').replace(/^0+(?!$)/, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',').replace(/^0+(?!$)/, '').replace(/(\.\d{2})\d+/, '$1'); if (parseInt(this.value.replace(/,/g, '')) > 1000000) { this.value = '1,000,000'; }"
+                required 
+              />
+            </div>
+          </div>
+          <div class="input-container">
+            <span class="input-title">Maintenance</span>
+            <div class="input">
+              <div class="dollar-sign">$</div>
+              <div class="vertical-line"></div>
+              <!-- <label class="sr-only">Car Loan Calculator</label> -->
+              <input 
+                type="type" 
+                class="product-cap-user-input" 
+                type="text" 
+                id="maintenance" 
+                placeholder="Enter amount" 
+                oninput="this.value = this.value.replace(/,/g, '').replace(/^0+(?!$)/, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',').replace(/^0+(?!$)/, '').replace(/(\.\d{2})\d+/, '$1'); if (parseInt(this.value.replace(/,/g, '')) > 1000000) { this.value = '1,000,000'; }"
+                required 
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-container">
+            <span class="input-title">Gap</span>
+            <div class="input">
+              <div class="dollar-sign">$</div>
+              <div class="vertical-line"></div>
+              <!-- <label class="sr-only">Car Loan Calculator</label> -->
+              <input 
+                type="type" 
+                class="product-cap-user-input" 
+                type="text" 
+                id="gap" 
+                placeholder="Enter amount" 
+                oninput="this.value = this.value.replace(/,/g, '').replace(/^0+(?!$)/, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',').replace(/^0+(?!$)/, '').replace(/(\.\d{2})\d+/, '$1'); if (parseInt(this.value.replace(/,/g, '')) > 1000000) { this.value = '1,000,000'; }"
+                required 
+              />
+            </div>
+            <div class="gap-eligibility" id="gap-eligibility">GAP is not eligible for financing if
+              front-end LTV is below 70%</div>
+          </div>
+          <div class="input-container">
+            <span class="input-title">Additional Products</span>
+            <div class="input">
+              <div class="dollar-sign">$</div>
+              <div class="vertical-line"></div>
+              <!-- <label class="sr-only">Car Loan Calculator</label> -->
+              <input 
+                type="type" 
+                class="product-cap-user-input" 
+                type="text" 
+                id="additional-products" 
+                placeholder="Enter amount" 
+                oninput="this.value = this.value.replace(/,/g, '').replace(/^0+(?!$)/, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',').replace(/^0+(?!$)/, '').replace(/(\.\d{2})\d+/, '$1'); if (parseInt(this.value.replace(/,/g, '')) > 1000000) { this.value = '1,000,000'; }"
+                required 
+              />
+            </div>
+            <div style="height: 30px"></div>
+          </div>
+        </div>
+        <div class="product-cap-button-container">
+          <!-- <label for="product-cap-calculate-btn" class="sr-only" >Submit Button</label> -->
+          <input type="submit" class="product-cap-loan-btn" id="product-cap-calculate-btn" value="Submit Calculation" />
+        </div>
+        <div class="product-cap-answer-container" id="product-cap-answer-container">
+          <div class="answer-row">
+            <div class="answers">
+              <div class="answer-header">Max Maintenance</div>
+              <div id="max-maintenance-answer" class="payment-amount answer-text">$0</div>
+            </div>
+            <div class="answers">
+              <div class="answer-header">Backend Total</div>
+              <div id="backend-total-answer" class="current-apr answer-text">$0</div>
+            </div>
+          </div>
+          <div class="answer-row">
+            <div class="answers">
+              <div class="answer-header">Max Backend Total</div>
+              <div id="max-backend-total-answer" class="payment-amount answer-text">$0</div>
+            </div>
+            <div class="answers">
+              <div class="answer-header">LTV without backend</div>
+              <div id="ltv-without-backend-answer" class="current-apr answer-text">$0</div>
+            </div>
+          </div>
+          <div class="answer-row">
+            <div class="answers">
+              <div class="answer-header">LTV with backend</div>
+              <div id="ltv-with-backend-answer" class="payment-amount answer-text">$0</div>
+            </div>
+            <div class="answers">
+              <div class="answer-header">Max LTV</div>
+              <div id="max-ltv-answer" class="current-apr answer-text">$0</div>
+            </div>
+          </div>
+          <div class="answer-disclosure">
+            disclosure here
+          </div>
+        </div>
+    </div>
+
+
+    </form>
+    </div>
+  </section>
+  <script>
+
+    let elements = {
+      tierDropDown: document.getElementById("tier-dropdown"),
+      requestedAmount: document.getElementById("requested-amount"),
+      vehicleValue: document.getElementById("vehicle-value"),
+      maintenance: document.getElementById("maintenance"),
+      gap: document.getElementById("gap"),
+      additionalProducts: document.getElementById("additional-products"),
+      productCapCalculateBtn: document.getElementById("product-cap-calculate-btn"),
+      productCapAnswerContainer: document.getElementById("product-cap-answer-container"),
+      form: document.getElementById("product-cap-calculator"),
+      gapEligibility: document.getElementById("gap-eligibility"),
+      maxWarrantyAnswer: document.getElementById("max-maintenance-answer"),
+      backendTotalAnswer: document.getElementById("backend-total-answer"),
+      maxBackendTotalAnswer: document.getElementById("max-backend-total-answer"),
+      ltvWithoutBackendAnswer: document.getElementById("ltv-without-backend-answer"),
+      ltvWithBackendAnswer: document.getElementById("ltv-with-backend-answer"),
+      maxLtvAnswer: document.getElementById("max-ltv-answer")
     }
-};
 
-const backendTotal = () => {
-    let warrantyValue = parseFloat(warranty.value);
-    let gapValue = parseFloat(gap.value);
-    let additionalProductsValue = parseFloat(additionalProducts.value);
-    return warrantyValue + gapValue + additionalProductsValue;
-};
 
-const calculateLTVWithoutBackend = () => {
-    let requestedAmountValue = parseFloat(requestedAmount.value);
-    let vehicleValueValue = parseFloat(vehicleValue.value);
-    let backendTotalValue = backendTotal();
-    let result = ((requestedAmountValue - backendTotalValue) / vehicleValueValue) * 100;
-    return result;
-};
-
-const calculateMaxBackendTotal = () => {
-    let vehicleValueInput = parseFloat(vehicleValue.value);
-
-    if (vehicleValueInput >= 10000) {
-        let value = vehicleValueInput * 0.2;
-        if (value < 4500) {
-            return 4500;
-        } else if (value > 10000) {
-            return 10000;
+    // Calculations
+    const calculateMaxMaintenance = (vehicleValue) => {
+      let reducedVehicleValue = vehicleValue * .18;
+      if(vehicleValue >= 10000) {
+        if (reducedVehicleValue < 3800) {
+          return 3800;
+        } else if (reducedVehicleValue > 10000) {
+          return 10000;
         } else {
-            return value;
+          return reducedVehicleValue;
         }
-    } else {
+      } else {
         return 3500;
+      }
     }
-};
 
-const maxLTVTotal = () => {
-    let tierValueInput = parseInt(tierDropDown.value);
+    const calculateBackendTotal = (maintenance, gap, additionalProducts) => {
+      let result = maintenance + gap + additionalProducts;
+      return result;
+    }
 
-    switch (tierValueInput) {
+    const calculateLTVWithoutBackend = (requestedAmount, vehicleValue, backendTotal) => {
+      let result = ((requestedAmount - backendTotal) / vehicleValue) * 100;
+      return result;
+    }
+
+    const calculateLTVWithBackend = (requestedAmount, vehicleValue) => {
+      let result = (requestedAmount / vehicleValue) * 100;
+      return result;
+    }
+
+    const calculateMaxBackendTotal = (vehicleValue) => {
+      let reducedVehicleValue = vehicleValue * .2;
+      if(vehicleValue >= 10000) {
+        if (reducedVehicleValue < 4500) {
+          return 4500;
+        } else if (reducedVehicleValue > 10000) {
+          return 10000;
+        } else {
+          return reducedVehicleValue;
+        }
+      } else {
+        return 3500;
+      }
+    }
+
+    const calculateLTVTotal = (tierDropDown) => {
+      let tierValueInput = parseInt(tierDropDown.value);
+      switch (tierValueInput) {
         case 1:
         case 2:
         case 3:
-            return 130;
+          return 130;
         case 4:
-            return 120;
+          return 120;
         default:
-            return 100;
+          return 100;
+      }
     }
-};
 
-const displayResults = (id, value) => {
-    if (value < 0) {
+    // Display Calculations
+    const displayResults = (id, value) => {
+      if (value < 0) {
         id.style.color = "red";
-    } else {
+      } else {
         id.style.color = "#043436";
+      }
+
+      value = value.toFixed(2);
+      id.innerHTML = `$${addCommasToInputCalculator(value)}`;
     }
-    id.innerHTML = `$${value}`;
-};
 
-const calculatorLtvWithBackend = () => {
-  let requestedAmountValue = parseFloat(requestedAmount.value);
-  let vehicleValueValue = parseFloat(vehicleValue.value);
 
-    return (Math.pow(requestedAmountValue / vehicleValueValue), 100);
-};
+    // Inputs Manipulation JS functions
+    const addCommasToInputCalculator = (value) => {
+      const [integer, decimal] = value.split('.');
+      const formattedInteger = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return decimal ? `${formattedInteger}.${decimal}` : `${formattedInteger}.00`;
+    };    
 
-form.addEventListener("input", (e) => {
-    let currentVehicleValue = parseFloat(vehicleValue.value) * 0.7;
-    console.log(calculateLTVWithoutBackend() < currentVehicleValue);
+    const removeCommaFromInputCalculator = (value) => parseFloat(value.replace(/,/g, "")) || 0;
 
-    if (form.checkValidity()) {
-        if (calculateLTVWithoutBackend() < currentVehicleValue) {
-            gap.disabled = true;
-            gapEligibility.style.visibility = "visible";
-            // gapEligibility.style.display = "block"; // Show eligibility message
-        } else {
-            gap.disabled = false;
-            gapEligibility.style.visibility = "hidden";
-            // gapEligibility.style.display = "none"; // Hide eligibility message
 
-        }
-    }
-});
+    const gapVisiblityController = () => {
+      let vehicleValue = removeCommaFromInputCalculator(elements.vehicleValue.value);
+      let requestedAmount = removeCommaFromInputCalculator(elements.requestedAmount.value);
+      let maintenance = removeCommaFromInputCalculator(elements.maintenance.value);
+      let gap = removeCommaFromInputCalculator(elements.gap.value);
+      let additionalProducts = removeCommaFromInputCalculator(elements.additionalProducts.value);
+      
+      let backendTotal = calculateBackendTotal(maintenance, gap, additionalProducts);
+      let ltvWithoutBackend = calculateLTVWithoutBackend(requestedAmount, vehicleValue, backendTotal);
+      
+      elements.productCapAnswerContainer.style.display = "none";
 
-productCapCalculateBtn.addEventListener("click", (e) => {
-    e.preventDefault();
+      if (ltvWithoutBackend < vehicleValue * 0.7) {
+        elements.gap.disabled = true;
+        elements.gapEligibility.style.visibility = "visible";
+        elements.gap.value = 0;
+      } else {
+        elements.gap.disabled = false;
+        elements.gapEligibility.style.visibility = "hidden";
+      }
+    };
 
-    if (!form.checkValidity()) {
-        form.reportValidity();
+    
+    elements.form.addEventListener("input", (e) => {
+      gapVisiblityController();
+    })
+
+    elements.productCapCalculateBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      if (!elements.form.checkValidity()) {
+        elements.form.reportValidity();
         return;
-    }
+      }
 
-    let maxWarranty = calculateMaxWarranty();
-    let maxBackend = calculateMaxBackendTotal();
-    let ltvWithoutBackend = calculateLTVWithoutBackend();
-    let ltvWithBackend = calculatorLtvWithBackend();
-    let maxLTV = maxLTVTotal();
+      let vehicleValue = removeCommaFromInputCalculator(elements.vehicleValue.value);
+      let requestedAmount = removeCommaFromInputCalculator(elements.requestedAmount.value);
+      let maintenance = removeCommaFromInputCalculator(elements.maintenance.value);
+      let gap = removeCommaFromInputCalculator(elements.gap.value);
+      let additionalProducts = removeCommaFromInputCalculator(elements.additionalProducts.value);
 
-    let maxWarrantyAnswer = document.getElementById("max-warranty-answer");
-    let backendTotalAnswer = document.getElementById("backend-total-answer");
-    let maxBackendTotalAnswer = document.getElementById("max-backend-total-answer");
-    let ltvWithoutBackendAnswer = document.getElementById("ltv-without-backend-answer");
-    let ltvWithBackendAnswer = document.getElementById("ltv-with-backend-answer");
-    let maxLTVAnswer = document.getElementById("max-ltv-answer");
+      let maxMaintenance = calculateMaxMaintenance(vehicleValue);
+      let backendTotal = calculateBackendTotal(maintenance, gap, additionalProducts);
+      let ltvWithoutBackend = calculateLTVWithoutBackend(requestedAmount, vehicleValue, backendTotal);
+      let ltvWithBackend = calculateLTVWithBackend(requestedAmount, vehicleValue, backendTotal);
+      let maxBackend = calculateMaxBackendTotal(vehicleValue);
+      let maxLTV = calculateLTVTotal(elements.tierDropDown);
 
-    displayResults(maxWarrantyAnswer, maxWarranty);
-    displayResults(backendTotalAnswer, backendTotal());
-    displayResults(maxBackendTotalAnswer, maxBackend);
-    displayResults(ltvWithoutBackendAnswer, ltvWithoutBackend.toFixed(2));
-    displayResults(ltvWithBackendAnswer, ltvWithBackend.toFixed(2));
-    displayResults(maxLTVAnswer, maxLTV);
+      displayResults(elements.maxWarrantyAnswer, maxMaintenance);
+      displayResults(elements.backendTotalAnswer, backendTotal);
+      displayResults(elements.maxBackendTotalAnswer, maxBackend);
+      displayResults(elements.ltvWithoutBackendAnswer, ltvWithoutBackend);
+      displayResults(elements.ltvWithBackendAnswer, ltvWithBackend);
+      displayResults(elements.maxLtvAnswer, maxLTV);
 
-    productCapAnswerContainer.style.display = "block";
-});
+      elements.productCapAnswerContainer.style.display = "block";
+    });
 
-      </script>
+  </script>
 </body>
+
 </html>
