@@ -29,14 +29,14 @@
 
             @media screen and (min-width: 500px) {
                 margin: 0 auto 2rem auto;
-                padding: 1rem;
+                padding: 48px;
             }
 
             .main-container {
                 display: flex;
                 flex-direction: column;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 769px) {
                     flex-direction: row;
                     justify-content: center;
                     width: 100%;
@@ -44,7 +44,7 @@
             }
 
             .layout {
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 769px) {
                     max-width: 625px;
                     min-width: 320px;
                     margin-right: 55px;
@@ -90,7 +90,7 @@
             }
 
             .input-container {
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 500px) {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
@@ -102,7 +102,7 @@
             .input-title-container {
                 margin-top: 2rem;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 500px) {
                     margin: 0;
                     padding-top: 20px;
                 }
@@ -142,7 +142,7 @@
                 width: 100%;
                 color: #777777;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 500px) {
                     max-width: 175px;
                 }
 
@@ -154,7 +154,7 @@
                     text-align: center;
                     padding-left: 10px;
 
-                    @media screen and (min-width: 768px) {
+                    @media screen and (min-width: 769px) {
                         max-width: 30px;
                     }
                 }
@@ -280,13 +280,13 @@
                 justify-content: center;
                 width: 100%;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 769px) {
                     max-width: 535px;
                 }
             }
 
             .answer-text-desktop {
-                justify-content: space-between;
+                justify-content: space-evenly;
                 width: 100%;
                 font-size: 16px;
                 font-weight: 500;
@@ -295,7 +295,6 @@
                 @media screen and (min-width: 500px) {
                     display: flex;
                     margin: 1rem auto;
-                
                 }
             }
 
@@ -332,28 +331,27 @@
             }
 
             .answer-text-container {
-                max-width: 290px;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                /* align-items: flex-start; */
-                /* justify-content: space-between; */
+                justify-content: space-between;
             }
 
 
             .answer-start {
                 color: #757575;
                 font-size: 14px;
-                height: 80px;
                 font-weight: 400;
-                max-width: 240px;
                 margin-bottom: 20px;
                 display: none;
+
                 @media screen and (min-width: 500px) {
                     display: block;
+                    padding-right: 20px;
                 }
             }
 
+      
 
             .cash-rewards-calculator-monthly-payment,
             .cash-rewards-calculator-apr {
@@ -363,9 +361,9 @@
                 line-height: 0px;
                 margin-bottom: 15%;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 769px) {
                     margin-bottom: 5rem;
-                    margin-top: 5%;
+                    margin-top: 20px;
                     padding-right: 1rem;
                     min-width: 170px;
 
@@ -387,7 +385,7 @@
                 font-weight: 700;
                 font-size: 16px;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 769px) {
                     font-size: 32px;
                 }
 
@@ -410,7 +408,7 @@
                     align-items: center;
                     justify-content: flex-end;
 
-                    @media screen and (min-width: 768px) {
+                    @media screen and (min-width: 769px) {
                         width: 100px;
                     }
                 }
@@ -453,7 +451,6 @@
             }
 
             .disclosures-container {
-                padding: .5rem;
                 margin-top: 1rem;
 
                 @media screen and (min-width: 500px) {
@@ -463,7 +460,6 @@
                 }
 
                 .disclosures {
-                    font-size: 15px;
                     line-height: 22.4px;
                     width: 100%;
                     color: #777777;
@@ -473,6 +469,7 @@
                         line-height: 22.4px;
                         color: #ffffff;
                         padding: 20px;
+                        font-size: 14px;
 
 
                     }
@@ -501,7 +498,7 @@
                     line-height: 24px;
                     font-weight: 500;
 
-                    @media screen and (min-width: 768px) {
+                    @media screen and (min-width: 769px) {
                         position: relative;
                         top: 1rem;
 
@@ -523,7 +520,7 @@
                     border-right: 10px solid transparent;
                     border-bottom: 10px solid #177d78;
 
-                    @media screen and (min-width: 768px) {
+                    @media screen and (min-width: 769px) {
                         top: 42%;
                     }
                 }
@@ -555,7 +552,7 @@
                     appearance: none;
 
 
-                    @media screen and (min-width: 768px) {
+                    @media screen and (min-width: 769px) {
                         width: 100vw;
                         max-width: 175px;
                         padding: 0 1.5rem;
