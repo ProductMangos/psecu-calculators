@@ -21,22 +21,25 @@
         }
 
         #cash-rewards-calculator-section {
-            margin: 0 auto 2rem auto;
+            margin: 2rem;
             display: flex;
             justify-content: center;
             max-width: 1280px;
 
 
             @media screen and (min-width: 768px) {
+                margin: 0 auto 2rem auto;
                 padding: 1rem;
             }
 
             .main-container {
+                display: flex;
+                flex-direction: column;
+
                 @media screen and (min-width: 768px) {
-                    display: flex;
+                    flex-direction: row;
                     justify-content: center;
                     width: 100%;
-
                 }
             }
 
@@ -52,7 +55,6 @@
                 font-size: 30px;
                 font-weight: 700;
                 line-height: 37.5px;
-                /* max-width: 675px; */
                 color: #043436;
             }
 
@@ -60,17 +62,14 @@
                 font-size: 16px;
                 font-weight: 300;
                 line-height: 24px;
-                /* margin: 1.5rem auto; */
                 margin-bottom: 25px;
-                margin-top: 10px;
+                margin-top: 20px;
                 width: 100%;
                 max-width: 600px;
             }
 
             .calculator-container {
-                /* Update with dynamic variable */
                 max-width: 1280px;
-                /* Update with dynamic variable */
                 border-radius: 10px;
             }
 
@@ -79,17 +78,8 @@
                 flex-direction: column;
                 justify-content: center;
                 max-width: 675px;
-                /* Update with dynamic variable */
-                background: #757575;
-                /* Update with dynamic variable */
                 margin: 0 auto;
-                /* padding: 1rem; */
                 border-radius: 20px;
-
-                @media screen and (min-width: 768px) {
-                    background-color: transparent;
-                    /* padding: 1rem 1rem 0 0; */
-                }
             }
 
             .input-container {
@@ -112,17 +102,10 @@
             }
 
             .input-title {
-                /* Update with dynamic variable */
                 color: #043436;
-                /* Update with dynamic variable */
-
                 font-family: Lexend Deca;
                 font-size: 16px;
-
-                /* Update with dynamic variable */
                 font-weight: 600;
-                /* Update with dynamic variable */
-
                 line-height: 22.4px;
                 width: 100%;
                 margin-bottom: .6rem;
@@ -194,10 +177,10 @@
 
             .slider-container {
                 width: 100%;
-                padding: 1rem 0;
+                padding-top: 5px;
                 display: none;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 500px) {
                     display: block;
                 }
             }
@@ -217,9 +200,17 @@
                 position: relative;
                 font-weight: 400;
                 z-index: 1;
-                padding: 0 .5rem;
+                /* padding: 0 .5rem; */
                 font-size: 16px;
                 opacity: .7;
+            }
+
+            #cash-rewards-min-savings-balance {
+                padding-right: 15px;
+            }
+
+            #cash-rewards-max-savings-balance {
+                padding-left: 15px;
             }
 
             input[type="range"] {
@@ -295,7 +286,7 @@
                 font-weight: 500;
                 display: none;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 500px) {
                     display: flex;
                     margin: 1rem auto;
                 }
@@ -397,7 +388,7 @@
             .cash-rewards-reset-container {
                 display: flex;
                 align-items: center;
-                margin: 1rem;
+                margin-top: 10px;
 
                 @media screen and (min-width: 768px) {
                     justify-content: flex-end;
@@ -444,7 +435,7 @@
             }
 
             .horizontal-line-desktop {
-                margin-top: 2rem;
+                margin-top: 25px;
                 opacity: .6;
                 display: none;
 
@@ -456,7 +447,7 @@
             .disclosures-container {
                 padding: .5rem;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 500px) {
                     background-color: #177D78;
                     padding: 1rem;
                     margin-top: 1rem;
@@ -596,21 +587,6 @@
                                 <div id="cash-rewards-max-savings-balance">$30,000</div>
                             </div>
                         </div>
-                        <div class="answer-text-mobile">
-                            <div class="answer-text-container">
-                                <p class="answer-header">1.5% Reward</p>
-                                <p
-                                    class="cash-rewards-calculator-monthly-payment cash-rewards-calculator-1-5-reward-percent">
-                                    $131.94</p>
-                            </div>
-                            <div class="answer-text-container">
-                                <p class="answer-header">2% Reward</p>
-                                <p
-                                    class="cash-rewards-calculator-monthly-payment cash-rewards-calculator-2-reward-percent">
-                                    $175.92</p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
                 <hr class="horizontal-line-desktop" />
