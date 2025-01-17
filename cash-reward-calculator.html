@@ -21,13 +21,13 @@
         }
 
         #cash-rewards-calculator-section {
-            margin: 2rem;
+            margin: .5rem;
             display: flex;
             justify-content: center;
             max-width: 1280px;
 
 
-            @media screen and (min-width: 768px) {
+            @media screen and (min-width: 500px) {
                 margin: 0 auto 2rem auto;
                 padding: 1rem;
             }
@@ -80,6 +80,13 @@
                 max-width: 675px;
                 margin: 0 auto;
                 border-radius: 20px;
+                padding: 20px 15px;
+                
+                background-color: #f2f2f2;
+                @media screen and (min-width: 500px) {
+                    background-color: transparent;
+                    padding: 0;
+                }
             }
 
             .input-container {
@@ -102,7 +109,7 @@
             }
 
             .input-title {
-                color: #043436;
+                color: #757575;
                 font-family: Lexend Deca;
                 font-size: 16px;
                 font-weight: 600;
@@ -177,7 +184,7 @@
 
             .slider-container {
                 width: 100%;
-                padding-top: 5px;
+                margin-top: 20px;
                 display: none;
 
                 @media screen and (min-width: 500px) {
@@ -279,7 +286,6 @@
             }
 
             .answer-text-desktop {
-                display: flex;
                 justify-content: space-between;
                 width: 100%;
                 font-size: 16px;
@@ -289,18 +295,34 @@
                 @media screen and (min-width: 500px) {
                     display: flex;
                     margin: 1rem auto;
+                
                 }
             }
+
+            .answer-text-mobile {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                font-size: clamp(0.75rem, 0.5695rem + 0.8969vw, 1rem);
+                line-height: 16px;
+                font-weight: 500;
+                padding: 2rem 1rem .5rem 1rem;
+                
+                @media screen and (min-width: 500px) {
+                    display: none;
+                }
+            }
+
 
             .answer-header {
                 font-size: 14px;
                 padding-bottom: 20px;
                 font-weight: 700;
+                color: #043436;
 
-                @media screen and (min-width: 768px) {
-                    color: #043436;
+                @media screen and (min-width: 500px) {
                     font-size: 26px;
-
                 }
             }
 
@@ -318,30 +340,17 @@
                 /* justify-content: space-between; */
             }
 
-            .answer-text-mobile {
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-                width: 100%;
-                font-size: clamp(0.75rem, 0.5695rem + 0.8969vw, 1rem);
-                line-height: 16px;
-                font-weight: 500;
-                padding: 2rem .5rem .5rem;
-
-                @media screen and (min-width: 768px) {
-                    display: none;
-                }
-            }
 
             .answer-start {
                 color: #757575;
                 font-size: 14px;
                 height: 80px;
                 font-weight: 400;
-
-                @media screen and (min-width: 768px) {
-                    margin-bottom: 20px;
-                    max-width: 240px;
+                max-width: 240px;
+                margin-bottom: 20px;
+                display: none;
+                @media screen and (min-width: 500px) {
+                    display: block;
                 }
             }
 
@@ -390,7 +399,7 @@
                 align-items: center;
                 margin-top: 10px;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 500px) {
                     justify-content: flex-end;
                 }
 
@@ -437,9 +446,8 @@
             .horizontal-line-desktop {
                 margin-top: 25px;
                 opacity: .6;
-                display: none;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 500px) {
                     display: block;
                 }
             }
@@ -455,15 +463,17 @@
                 }
 
                 .disclosures {
-                    padding: 20px;
-                    font-size: 14px;
-                    line-height: 16px;
+                    font-size: 15px;
+                    line-height: 22.4px;
                     width: 100%;
-                    color: #ffffff;
+                    color: #777777;
                     font-weight: 400;
 
-                    @media screen and (min-width: 768px) {
+                    @media screen and (min-width: 500px) {
                         line-height: 22.4px;
+                        color: #ffffff;
+                        padding: 20px;
+
 
                     }
                 }
@@ -471,12 +481,13 @@
 
             .cta-container {
                 text-align: center;
-                margin: 2rem auto;
                 width: 100%;
+                margin: 1rem 0;
+                height: 15px;
 
-                @media screen and (min-width: 768px) {
+                @media screen and (min-width: 500px) {
                     margin: 0;
-                    height: 15px;
+
                 }
 
                 .cta {
@@ -575,8 +586,15 @@
                                 <div class="dollar-sign">$</div>
                                 <div class="vertical-line"></div>
                                 <!-- <label for="cash-rewards-calculator-purchase-amount" class="sr-only">Cash Rewards Calculator Input</label> -->
-                                <input class="user-input" type="text" id="cash-rewards-calculator-purchase-amount"
-                                    placeholder="Enter amount" value="20000" min="1" step="1000" required />
+                                <input 
+                                    class="user-input" 
+                                    type="text" 
+                                    id="cash-rewards-calculator-purchase-amount"
+                                    placeholder="20,000.00" 
+                                    oninput="this.value = this.value.replace(/,/g, '').replace(/^0+(?!$)/, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',').replace(/^0+(?!$)/, '').replace(/(\.\d{2})\d+/, '$1'); if (parseInt(this.value.replace(/,/g, '')) > 30000) { this.value = '30,000'; }"
+                                    pattern="[0-9,.]*"  
+                                    required 
+                                />
                             </div>
                         </div>
                         <div class="slider-container">
@@ -585,6 +603,16 @@
                                 <input label="cash rewards min borrow slider" type="range"
                                     id="cash-rewards-purchase-amount-slider" min="500" max="30000" value="20000" />
                                 <div id="cash-rewards-max-savings-balance">$30,000</div>
+                            </div>
+                        </div>
+                        <div class="answer-text-mobile">
+                            <div class="answer-text-container">
+                                <p class="answer-header" id="cash-rewards-less-reward" data-less="{{ module.cash_rewards_calculator_content.less_reward }}">1.5% Reward</p>
+                                <p class="cash-rewards-calculator-monthly-payment cash-rewards-calculator-1-5-reward-percent">$131.94</p>
+                            </div>
+                            <div class="answer-text-container">
+                                <p class="answer-header" id="cash-rewards-more-reward" data-more="{{ module.cash_rewards_calculator_content.more_reward }}">2.5% Reward</p>
+                                <p class="cash-rewards-calculator-monthly-payment cash-rewards-calculator-2-reward-percent">$175.92</p>
                             </div>
                         </div>
                     </div>
@@ -652,27 +680,27 @@
         let rewards1dot5 = 1.5;
         let rewards2 = 2;
 
-        const enforceSavingsCalculatorNumericInput = (input, maxValue) => {
-            input.addEventListener('input', function () {
-                const cursorPosition = input.selectionStart;
-                // Remove commas
-                let numericValue = input.value.replace(/,/g, '');
-                // Remove non-digit characters
-                numericValue = numericValue.replace(/\D/g, '');
+        // const enforceSavingsCalculatorNumericInput = (input, maxValue) => {
+        //     input.addEventListener('input', function () {
+        //         const cursorPosition = input.selectionStart;
+        //         // Remove commas
+        //         let numericValue = input.value.replace(/,/g, '');
+        //         // Remove non-digit characters
+        //         numericValue = numericValue.replace(/\D/g, '');
 
-                // Enforce maximum value
-                if (numericValue && parseInt(numericValue, 10) > maxValue) {
-                    numericValue = maxValue.toString();
-                }
+        //         // Enforce maximum value
+        //         if (numericValue && parseInt(numericValue, 10) > maxValue) {
+        //             numericValue = maxValue.toString();
+        //         }
 
-                // Format value with commas
-                input.value = numericValue ? parseInt(numericValue, 10).toLocaleString() : '';
-                // Preserve cursor position
-                input.setSelectionRange(cursorPosition, cursorPosition);
-            });
-        };
+        //         // Format value with commas
+        //         input.value = numericValue ? parseInt(numericValue, 10).toLocaleString() : '';
+        //         // Preserve cursor position
+        //         input.setSelectionRange(cursorPosition, cursorPosition);
+        //     });
+        // };
 
-        enforceSavingsCalculatorNumericInput(cashRewardsCalculatorPurchaseInput, maxCashRewardsCalculatorPurchaseAmount);
+        // enforceSavingsCalculatorNumericInput(cashRewardsCalculatorPurchaseInput, maxCashRewardsCalculatorPurchaseAmount);
 
         const addCommasToInputCalculator = (value) => {
             return parseFloat(value || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -715,7 +743,7 @@
         cashRewardsCalculatorPurchaseInputSlider.addEventListener('input', () => {
             // adjusting both the input and slider values
             cashRewardsCalculatorPurchaseAmount = cashRewardsCalculatorPurchaseInputSlider.value;
-            cashRewardsCalculatorPurchaseInput.value = parseInt(cashRewardsCalculatorPurchaseAmount, 10).toLocaleString(); // Ensure commas are added
+            cashRewardsCalculatorPurchaseInput.value = parseInt(cashRewardsCalculatorPurchaseAmount, 10).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); 
             adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
             updateSavingsCalculatorAnswer();
 
@@ -731,8 +759,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             // adjusting both the input and slider values
-            cashRewardsCalculatorPurchaseAmount = addCommasToInputCalculator(cashRewardsCalculatorPurchaseInputSlider.value);
-            cashRewardsCalculatorPurchaseInput.value = cashRewardsCalculatorPurchaseAmount;
             adjustSavingsCalculatorSliderBackground(cashRewardsCalculatorPurchaseInputSlider);
             cashRewardsCalculatorPurchaseInputSlider.step = 500;
 
