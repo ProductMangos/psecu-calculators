@@ -678,28 +678,6 @@
         let rewards1dot5 = 1.5;
         let rewards2 = 2;
 
-        // const enforceSavingsCalculatorNumericInput = (input, maxValue) => {
-        //     input.addEventListener('input', function () {
-        //         const cursorPosition = input.selectionStart;
-        //         // Remove commas
-        //         let numericValue = input.value.replace(/,/g, '');
-        //         // Remove non-digit characters
-        //         numericValue = numericValue.replace(/\D/g, '');
-
-        //         // Enforce maximum value
-        //         if (numericValue && parseInt(numericValue, 10) > maxValue) {
-        //             numericValue = maxValue.toString();
-        //         }
-
-        //         // Format value with commas
-        //         input.value = numericValue ? parseInt(numericValue, 10).toLocaleString() : '';
-        //         // Preserve cursor position
-        //         input.setSelectionRange(cursorPosition, cursorPosition);
-        //     });
-        // };
-
-        // enforceSavingsCalculatorNumericInput(cashRewardsCalculatorPurchaseInput, maxCashRewardsCalculatorPurchaseAmount);
-
         const addCommasToInputCalculator = (value) => {
             return parseFloat(value || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         };
